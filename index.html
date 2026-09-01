@@ -1,40 +1,758 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GYM MANAGEMENT SYSTEM – WEBSITE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GYM FIT - Gym Management System</title>
+
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}.wrap{max-width:1280px;margin:auto;border:1px solid #222;background:#fff}
-header{height:58px;background:#090909;color:#fff;display:flex;align-items:center;padding:0 16px;gap:24px;position:sticky;top:0;z-index:10}.logo{font-weight:800;font-size:14px;white-space:nowrap}.logo span{color:#e21d25}nav{display:flex;gap:21px;justify-content:center;flex:1}nav a{color:#fff;text-decoration:none;font-size:10px}nav a:hover{color:#e21d25}.join,.red{background:#e21d25;color:white;border:0;border-radius:3px;padding:9px 15px;font-size:10px;font-weight:bold;text-decoration:none;cursor:pointer}
-.hero{height:370px;background:linear-gradient(90deg,#050505 0%,#050505 40%,rgba(0,0,0,.65) 62%,rgba(0,0,0,.05)),url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221280%22 height=%22370%22%3E%3Crect width=%221280%22 height=%22370%22 fill=%22%23111111%22/%3E%3Ccircle cx=%22900%22 cy=%22160%22 r=%22145%22 fill=%22%23333%22/%3E%3Ccircle cx=%22900%22 cy=%22150%22 r=%22105%22 fill=%22%231d1d1d%22/%3E%3Cpath d=%22M820 120q80-70 160 0l-25 185q-55 45-110 0z%22 fill=%22%23666666%22/%3E%3Cpath d=%22M850 120l-65 80m145-80l65 80M835 300l-70 70m185-70l70 70%22 stroke=%22%23999999%22 stroke-width=%2220%22/%3E%3C/svg%3E') center/cover no-repeat;color:#fff}.heroText{padding:45px 26px}.heroBrand{font-size:12px;font-weight:bold;margin-bottom:45px}.hero h1{font-size:40px;line-height:1.02;margin:0 0 15px}.hero p{font-size:12px;line-height:1.6;color:#ddd;margin-bottom:20px}
-section{padding:22px 14px}.gray{background:#f5f5f5}.title{text-align:center;font-size:17px;font-weight:800;margin:0 0 17px}.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.plan{background:#fff;border:1px solid #ccc;border-radius:5px;padding:12px;text-align:center}.plan h3{font-size:10px;margin:2px}.price{font-size:20px;font-weight:bold;margin-top:7px}.small{font-size:8px;color:#777}.plan ul{list-style:none;text-align:left;padding:7px 0;margin:0;font-size:8px;line-height:1.9;color:#555}.plan button{border:0;background:#e21d25;color:#fff;font-size:8px;font-weight:bold;border-radius:3px;padding:7px 9px;cursor:pointer}
-.trainers{display:flex;justify-content:center;gap:9px}.trainer{width:210px;text-align:center;background:#f7f7f7;border:1px solid #ccc;border-radius:5px;overflow:hidden}.person{height:145px;background:#252525;position:relative}.person:before{content:"";position:absolute;width:65px;height:65px;border-radius:50%;background:#b6b6b6;top:20px;left:calc(50% - 32px)}.person:after{content:"";position:absolute;width:115px;height:95px;border-radius:55px 55px 0 0;background:#777;bottom:0;left:calc(50% - 57px)}.trainer:nth-child(2) .person:before{background:#aaa;width:58px;height:58px}.trainer:nth-child(2) .person:after{background:#888}.trainer h3{font-size:10px;margin:9px 0 3px}.trainer p,.trainer span{font-size:8px;color:#666;margin:3px}.view{display:block;margin:10px auto 0}
-.registration{background:#fafafa;border-top:1px solid #ddd}.form{max-width:900px;margin:auto;border:1px solid #ccc;background:#fff;border-radius:5px;padding:17px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.form label{font-size:9px;font-weight:bold}.form input,.form select{display:block;width:100%;margin-top:5px;border:1px solid #ddd;border-radius:3px;padding:9px;font-size:9px;background:#fff}.register{grid-column:1/-1;justify-self:center}.msg{text-align:center;font-size:10px;font-weight:bold;margin:9px}
-.dashboardArea{display:grid;grid-template-columns:155px 1fr;background:#f3f3f3;border-top:1px solid #aaa}.side{background:#0b0b0b;color:#fff;min-height:720px;padding:16px 9px}.side a{display:block;color:#ddd;text-decoration:none;font-size:9px;padding:10px 7px;border-radius:3px}.side a:hover,.side .sel{background:#e21d25;color:#fff}.dash{padding:14px}.dashHead{display:flex;justify-content:space-between;align-items:center}.dashHead h2{font-size:17px;margin:0}.dashHead p{font-size:8px;color:#777}.date{font-size:8px;background:#fff;border:1px solid #ddd;padding:6px 10px;border-radius:15px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}.stat,.box{background:#fff;border:1px solid #ccc;border-radius:4px}.stat{padding:10px;position:relative}.stat label{font-size:8px;color:#777}.stat strong{display:block;font-size:16px;margin-top:6px}.stat i{position:absolute;right:10px;top:18px;color:#e21d25;font-style:normal}.topDash{display:grid;grid-template-columns:2fr 1fr;gap:7px;margin-bottom:7px}.box{padding:11px}.box h3{font-size:9px;margin:0 0 10px}.graph{height:135px;border-left:1px solid #ddd;border-bottom:1px solid #ddd;background:repeating-linear-gradient(to bottom,#fff 0 26px,#eee 27px);position:relative}.graph svg{position:absolute;inset:0;width:100%;height:100%}.pie{width:105px;height:105px;border-radius:50%;background:conic-gradient(#e21d25 0 43%,#35a853 43% 74%,#f2b233 74%);margin:10px auto}.legend{text-align:center;font-size:7px}.legend span{margin:0 3px}.tableBox{margin-bottom:7px}.boxTitle{display:flex;align-items:center;justify-content:space-between}.add{background:#e21d25;color:#fff;border:0;border-radius:3px;font-size:8px;padding:7px 9px;font-weight:bold;cursor:pointer}.scroll{overflow:auto}table{width:100%;min-width:650px;border-collapse:collapse}th,td{font-size:8px;text-align:left;padding:8px 6px;border-bottom:1px solid #eee}th{background:#fafafa}em{font-style:normal;padding:3px 5px;border-radius:3px;font-size:7px}.ok{background:#e3f4e8;color:#238345}.bad{background:#ffe4e4;color:#d5232b}.wait{background:#fff0d1;color:#bd8300}
-.database{border-top:2px dashed #888}.database h2{text-align:center;font-size:17px}.database h2 span{color:#e21d25}.schema{display:grid;grid-template-columns:repeat(3,1fr);gap:25px 40px}.db{border:1px solid #aaa;border-radius:4px;overflow:hidden}.db h3{margin:0;padding:8px;background:#17638d;color:#fff;text-align:center;font-size:9px}.db p{margin:0;padding:5px 8px;font-size:8px;border-bottom:1px solid #eee}footer{text-align:center;background:#080808;color:#aaa;padding:15px;font-size:9px}
-@media(max-width:800px){nav{display:none}.plans{grid-template-columns:repeat(2,1fr)}.dashboardArea{grid-template-columns:1fr}.side{min-height:auto;display:grid;grid-template-columns:repeat(4,1fr)}.side .logo{grid-column:1/-1}.stats{grid-template-columns:repeat(2,1fr)}.schema{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.plans,.schema,.form{grid-template-columns:1fr}.trainers{flex-direction:column;align-items:center}.dashboardArea .side{grid-template-columns:repeat(2,1fr)}.topDash{grid-template-columns:1fr}.register{grid-column:auto}.hero h1{font-size:31px}}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    background:#111;
+}
+
+/* LOGIN SCREEN */
+
+.login-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+
+    background:
+        linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.88)),
+        radial-gradient(circle at top right,#555,#111 55%);
+}
+
+.login-box{
+    width:100%;
+    max-width:380px;
+    background:#fff;
+    border-radius:12px;
+    padding:30px 22px;
+    box-shadow:0 10px 35px rgba(0,0,0,.5);
+}
+
+.logo{
+    text-align:center;
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.logo span{
+    color:#e51c27;
+}
+
+.system-name{
+    text-align:center;
+    color:#777;
+    font-size:11px;
+    margin-bottom:25px;
+}
+
+.login-title{
+    font-size:20px;
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.login-subtitle{
+    text-align:center;
+    color:#777;
+    font-size:10px;
+    margin-bottom:20px;
+}
+
+.user-types{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.user-type{
+    flex:1;
+    padding:11px;
+    border:1px solid #ddd;
+    background:#f5f5f5;
+    border-radius:5px;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.user-type.selected{
+    background:#e51c27;
+    color:white;
+    border-color:#e51c27;
+}
+
+.field{
+    margin-bottom:12px;
+}
+
+.field label{
+    display:block;
+    font-size:9px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.field input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:5px;
+    font-size:11px;
+}
+
+.login-button{
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:5px;
+    background:#e51c27;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.demo-note{
+    margin-top:15px;
+    text-align:center;
+    color:#999;
+    font-size:8px;
+}
+
+.message{
+    display:none;
+    text-align:center;
+    margin-top:12px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+/* MAIN WEBSITE */
+
+.website{
+    display:none;
+    min-height:100vh;
+    background:#fff;
+}
+
+header{
+    height:58px;
+    background:#080808;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 16px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.header-logo{
+    font-size:16px;
+    font-weight:900;
+}
+
+.header-logo span{
+    color:#e51c27;
+}
+
+.logout{
+    background:#e51c27;
+    color:white;
+    border:0;
+    border-radius:4px;
+    padding:8px 12px;
+    font-size:9px;
+    font-weight:bold;
+}
+
+.hero{
+    min-height:430px;
+    padding:40px 24px;
+    display:flex;
+    align-items:flex-end;
+    color:white;
+
+    background:
+        linear-gradient(90deg,#050505 0%,#080808d9 55%,#222 100%);
+}
+
+.hero-content{
+    max-width:330px;
+}
+
+.kicker{
+    color:#e51c27;
+    font-size:10px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:38px;
+    line-height:.98;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:11px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:11px 16px;
+    background:#e51c27;
+    color:#fff;
+    border:0;
+    border-radius:4px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+section{
+    padding:28px 16px;
+}
+
+.gray{
+    background:#f5f5f5;
+}
+
+.section-title{
+    text-align:center;
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.section-subtitle{
+    text-align:center;
+    font-size:10px;
+    color:#777;
+    margin-bottom:20px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:7px;
+    padding:15px;
+}
+
+.card.featured{
+    border:2px solid #e51c27;
+}
+
+.card h3{
+    font-size:10px;
+}
+
+.price{
+    font-size:23px;
+    font-weight:900;
+    margin:7px 0;
+}
+
+.card p{
+    font-size:9px;
+    color:#777;
+    line-height:1.6;
+}
+
+.card button{
+    width:100%;
+    margin-top:12px;
+    padding:8px;
+    background:#111;
+    color:#fff;
+    border:0;
+    border-radius:4px;
+    font-size:8px;
+}
+
+.featured button{
+    background:#e51c27;
+}
+
+.dashboard{
+    background:#eee;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.stat{
+    background:white;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+.stat small{
+    color:#777;
+    font-size:8px;
+}
+
+.stat strong{
+    display:block;
+    font-size:18px;
+    margin-top:5px;
+}
+
+footer{
+    background:#080808;
+    color:#aaa;
+    text-align:center;
+    padding:18px;
+    font-size:9px;
+}
+
+@media(min-width:700px){
+
+    .login-box{
+        max-width:400px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .stats{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
-<header><div class="logo"><span>✚</span> GYM FIT</div><nav><a href="#home">Home</a><a href="#about">About</a><a href="#programs">Programs</a><a href="#trainers">Trainers</a><a href="#plans">Plans</a><a href="#contact">Contact</a></nav><a class="join" href="#registration">Join Now</a></header>
 
-<section id="home" class="hero"><div class="heroText"><div class="heroBrand">✚ GYM FIT</div><h1>BUILD YOUR<br>STRONGER SELF</h1><p>Get fit, stay healthy and<br>live a better life.</p><a class="red" href="#registration">JOIN NOW</a></div></section>
+<!-- LOGIN -->
 
-<section id="plans" class="gray"><h2 class="title">MEMBERSHIP PLANS</h2><div class="plans">
-<div class="plan"><h3>MONTHLY</h3><div class="price">₹999</div><div class="small">/month</div><ul><li>• Gym Access</li><li>• Basic Support</li><li>• 1 Month Validity</li></ul><button data-plan="Monthly">CHOOSE PLAN</button></div>
-<div class="plan"><h3>3 MONTHS</h3><div class="price">₹2499</div><div class="small">/3 months</div><ul><li>• Gym Access</li><li>• Diet Plan</li><li>• 3 Months Validity</li></ul><button data-plan="3 Months">CHOOSE PLAN</button></div>
-<div class="plan"><h3>6 MONTHS</h3><div class="price">₹4799</div><div class="small">/6 months</div><ul><li>• Gym Access</li><li>• Diet Plan</li><li>• Personal Training</li><li>• 6 Months Validity</li></ul><button data-plan="6 Months">CHOOSE PLAN</button></div>
-<div class="plan"><h3>1 YEAR</h3><div class="price">₹7999</div><div class="small">/year</div><ul><li>• Gym Access</li><li>• Diet Plan</li><li>• Personal Training</li><li>• 12 Months Validity</li></ul><button data-plan="1 Year">CHOOSE PLAN</button></div>
-</div></section>
+<div class="login-screen" id="loginScreen">
 
-<section id="trainers"><h2 class="title">OUR TRAINERS</h2><div class="trainers">
-<div class="trainer"><div class="person"></div><h3>Rohit Sharma</h3><p>Strength Trainer</p><span>☎ 9876543210</span></div>
-<div class="trainer"><div class="person"></div><h3>Ananya Singh</h3><p>Fitness Coach</p><span>☎ 9123456780</span></div>
-<div class="trainer"><div class="person"></div><h3>Vikram Patel</h3><p>Bodybuilding Coach</p><span>☎ 9988776655</span></div></div><button class="red view" onclick="alert('Rohit Sharma • Ananya Singh • Vikram Patel')">VIEW ALL TRAINERS</button></section>
+    <div class="login-box">
 
-<section id="registration" class="registration"><h2 class="title">MEMBER REGISTRATION</h2><form class="form" id="form">
+        <div class="logo">
+            <span>✚</span> GYM FIT
+        </div>
+
+        <div class="system-name">
+            GYM MANAGEMENT SYSTEM
+        </div>
+
+        <div class="login-title">
+            Welcome Back
+        </div>
+
+        <div class="login-subtitle">
+            Login to continue
+        </div>
+
+        <div class="user-types">
+
+            <button
+                class="user-type selected"
+                id="clientBtn"
+                onclick="selectUser('client')">
+                CLIENT
+            </button>
+
+            <button
+                class="user-type"
+                id="adminBtn"
+                onclick="selectUser('admin')">
+                ADMIN
+            </button>
+
+        </div>
+
+        <form onsubmit="login(event)">
+
+            <div class="field">
+
+                <label>USERNAME / EMAIL</label>
+
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Enter username or email"
+                    required>
+
+            </div>
+
+            <div class="field">
+
+                <label>PASSWORD</label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter password"
+                    required>
+
+            </div>
+
+            <button class="login-button" type="submit">
+                LOGIN
+            </button>
+
+        </form>
+
+        <div class="message" id="message"></div>
+
+        <div class="demo-note">
+            GYM FIT College Project Demonstration
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- WEBSITE -->
+
+<div class="website" id="website">
+
+<header>
+
+    <div class="header-logo">
+        <span>✚</span> GYM FIT
+    </div>
+
+    <button class="logout" onclick="logout()">
+        LOGOUT
+    </button>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="kicker">
+            GYM MANAGEMENT SYSTEM
+        </div>
+
+        <h1>
+            BUILD YOUR
+            <br>
+            STRONGER SELF
+        </h1>
+
+        <p>
+            Get fit, stay healthy and manage
+            your gym experience with GYM FIT.
+        </p>
+
+        <button class="btn" onclick="showPlans()">
+            VIEW PLANS
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="gray" id="plans">
+
+    <h2 class="section-title">
+        MEMBERSHIP PLANS
+    </h2>
+
+    <p class="section-subtitle">
+        Choose the plan that suits you
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>MONTHLY</h3>
+
+            <div class="price">
+                ₹999
+            </div>
+
+            <p>
+                Gym Access<br>
+                Basic Support<br>
+                1 Month Validity
+            </p>
+
+            <button onclick="selectPlan('Monthly')">
+                CHOOSE PLAN
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>3 MONTHS</h3>
+
+            <div class="price">
+                ₹2499
+            </div>
+
+            <p>
+                Gym Access<br>
+                Diet Plan<br>
+                3 Months Validity
+            </p>
+
+            <button onclick="selectPlan('3 Months')">
+                CHOOSE PLAN
+            </button>
+
+        </div>
+
+
+        <div class="card featured">
+
+            <h3>6 MONTHS</h3>
+
+            <div class="price">
+                ₹4799
+            </div>
+
+            <p>
+                Gym Access<br>
+                Diet Plan<br>
+                Personal Training
+            </p>
+
+            <button onclick="selectPlan('6 Months')">
+                CHOOSE PLAN
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>1 YEAR</h3>
+
+            <div class="price">
+                ₹7999
+            </div>
+
+            <p>
+                Gym Access<br>
+                Diet Plan<br>
+                Personal Training
+            </p>
+
+            <button onclick="selectPlan('1 Year')">
+                CHOOSE PLAN
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard">
+
+    <h2 class="section-title">
+        DASHBOARD
+    </h2>
+
+    <p class="section-subtitle">
+        Gym management overview
+    </p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <small>Total Members</small>
+            <strong>152</strong>
+        </div>
+
+        <div class="stat">
+            <small>Active Memberships</small>
+            <strong>98</strong>
+        </div>
+
+        <div class="stat">
+            <small>Total Trainers</small>
+            <strong>12</strong>
+        </div>
+
+        <div class="stat">
+            <small>Total Revenue</small>
+            <strong>₹2,45,800</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    GYM FIT
+    <br>
+    Gym Management System — College Project
+
+</footer>
+
+</div>
+
+
+<script>
+
+let selectedUser = "client";
+
+
+function selectUser(type){
+
+    selectedUser = type;
+
+    document
+        .getElementById("clientBtn")
+        .classList.remove("selected");
+
+    document
+        .getElementById("adminBtn")
+        .classList.remove("selected");
+
+
+    if(type === "client"){
+
+        document
+            .getElementById("clientBtn")
+            .classList.add("selected");
+
+    }else{
+
+        document
+            .getElementById("adminBtn")
+            .classList.add("selected");
+
+    }
+
+}
+
+
+function login(event){
+
+    event.preventDefault();
+
+    const username =
+        document.getElementById("username").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("message");
+
+
+    if(username && password){
+
+        message.style.display = "block";
+
+        message.style.color = "#218147";
+
+        message.innerHTML =
+            "✓ Login successful";
+
+
+        setTimeout(function(){
+
+            document
+                .getElementById("loginScreen")
+                .style.display = "none";
+
+            document
+                .getElementById("website")
+                .style.display = "block";
+
+            window.scrollTo(0,0);
+
+        },700);
+
+    }
+
+}
+
+
+function logout(){
+
+    document
+        .getElementById("website")
+        .style.display = "none";
+
+    document
+        .getElementById("loginScreen")
+        .style.display = "flex";
+
+    document
+        .getElementById("username")
+        .value = "";
+
+    document
+        .getElementById("password")
+        .value = "";
+
+}
+
+
+function showPlans(){
+
+    document
+        .getElementById("plans")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+function selectPlan(plan){
+
+    alert(
+        "You selected the " +
+        plan +
+        " membership plan."
+    );
+
+}
+
+</script>
+
+</body>
+</html><section id="registration" class="registration"><h2 class="title">MEMBER REGISTRATION</h2><form class="form" id="form">
 <label>Full Name<input required placeholder="Enter full name"></label><label>Phone Number<input required placeholder="Enter phone number"></label>
 <label>Email<input required type="email" placeholder="Enter email"></label><label>Date of Birth<input required type="date"></label>
 <label>Address<input required placeholder="Enter address"></label><label>Gender<select required><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></label>
