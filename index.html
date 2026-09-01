@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GYM FIT - Gym Management System</title>
 
 <style>
-
-/* =========================
-   GENERAL
-========================= */
-
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -31,32 +22,20 @@ body{
     color:#111;
 }
 
-.wrap{
-    max-width:1280px;
-    margin:auto;
-    background:#fff;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
 header{
-    height:60px;
-    background:#090909;
-    color:#fff;
+    background:#050505;
+    color:white;
+    min-height:60px;
     display:flex;
     align-items:center;
-    padding:0 20px;
-    gap:25px;
+    padding:0 25px;
     position:sticky;
     top:0;
     z-index:1000;
 }
 
 .logo{
-    font-size:17px;
+    font-size:22px;
     font-weight:900;
     white-space:nowrap;
 }
@@ -68,15 +47,14 @@ header{
 nav{
     display:flex;
     justify-content:center;
-    align-items:center;
-    gap:22px;
+    gap:25px;
     flex:1;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
-    font-size:12px;
+    font-size:13px;
     font-weight:bold;
 }
 
@@ -84,819 +62,651 @@ nav a:hover{
     color:#e21d25;
 }
 
-.join,
-.red{
-    display:inline-block;
+.join{
     background:#e21d25;
-    color:#fff;
-    border:0;
-    border-radius:4px;
-    padding:10px 16px;
-    font-size:11px;
-    font-weight:bold;
+    color:white;
     text-decoration:none;
-    cursor:pointer;
+    padding:10px 15px;
+    border-radius:4px;
+    font-size:12px;
+    font-weight:bold;
 }
-
-.join:hover,
-.red:hover{
-    background:#c9161d;
-}
-
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
-    min-height:420px;
+    min-height:470px;
+    color:white;
     display:flex;
     align-items:center;
-    color:#fff;
-
-    background:
-    linear-gradient(
-        90deg,
-        #000 0%,
-        #000 42%,
-        rgba(0,0,0,.75) 62%,
-        rgba(0,0,0,.25) 100%
-    );
-    
     position:relative;
     overflow:hidden;
+    background:#050505;
 }
 
-.hero::after{
+.hero:after{
     content:"";
     position:absolute;
     right:0;
     top:0;
     width:58%;
     height:100%;
-
     background:
-    radial-gradient(
-        circle at 55% 35%,
-        #777 0,
-        #333 20%,
-        #171717 45%,
-        #050505 75%
-    );
-
-    z-index:0;
+        radial-gradient(circle at 55% 35%,#777,#333 25%,#111 60%,#000);
 }
 
-.heroText{
+.hero-content{
     position:relative;
-    z-index:1;
-    padding:55px 30px;
+    z-index:2;
     width:55%;
+    padding:50px;
 }
 
-.heroBrand{
+.hero-small{
     color:#e21d25;
-    font-size:13px;
     font-weight:bold;
-    margin-bottom:25px;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:46px;
+    font-size:52px;
     line-height:1.05;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .hero p{
     color:#ddd;
-    font-size:14px;
+    font-size:15px;
     line-height:1.6;
     margin-bottom:25px;
 }
 
-
-/* =========================
-   SECTIONS
-========================= */
+.red-btn{
+    display:inline-block;
+    background:#e21d25;
+    color:white;
+    border:0;
+    padding:12px 20px;
+    border-radius:4px;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
 
 section{
-    padding:55px 25px;
+    padding:60px 25px;
 }
 
 .gray{
-    background:#f5f5f5;
+    background:#f4f4f4;
 }
 
 .title{
     text-align:center;
-    font-size:25px;
-    font-weight:900;
-    margin-bottom:30px;
+    font-size:30px;
+    margin-bottom:12px;
 }
 
 .subtitle{
     text-align:center;
-    max-width:700px;
-    margin:-15px auto 30px;
     color:#666;
-    font-size:12px;
+    max-width:700px;
+    margin:0 auto 35px;
     line-height:1.7;
+    font-size:13px;
 }
 
-
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .about{
+    max-width:1100px;
+    margin:auto;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:35px;
+    gap:40px;
     align-items:center;
 }
 
-.aboutBox{
-    padding:20px;
-}
-
-.aboutBox h3{
-    font-size:25px;
+.about h2{
+    font-size:30px;
     margin-bottom:15px;
 }
 
-.aboutBox p{
+.about p{
     color:#555;
-    font-size:13px;
     line-height:1.8;
+    font-size:14px;
     margin-bottom:15px;
 }
 
-.aboutCards{
+.about-stats{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.aboutCard{
-    background:#111;
-    color:#fff;
-    padding:25px 15px;
-    border-radius:5px;
-    text-align:center;
-}
-
-.aboutCard strong{
-    display:block;
-    color:#e21d25;
-    font-size:24px;
-    margin-bottom:5px;
-}
-
-.aboutCard span{
-    font-size:11px;
-}
-
-
-/* =========================
-   PROGRAMS
-========================= */
-
-.programs{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
 
-.program{
-    background:#fff;
+.about-card{
+    background:#111;
+    color:white;
+    padding:30px 15px;
+    text-align:center;
+    border-radius:5px;
+}
+
+.about-card strong{
+    display:block;
+    color:#e21d25;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.about-card span{
+    font-size:12px;
+}
+
+/* PROGRAMS */
+
+.cards{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:30px 20px;
     border:1px solid #ddd;
+    border-radius:6px;
+    text-align:center;
+}
+
+.icon{
+    width:65px;
+    height:65px;
+    background:#e21d25;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0 auto 18px;
+    font-size:28px;
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-size:17px;
+}
+
+.card p{
+    color:#666;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* PLANS */
+
+.plans{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.plan{
+    background:white;
+    border:1px solid #ccc;
     border-radius:6px;
     padding:25px 18px;
     text-align:center;
 }
 
-.programIcon{
-    width:60px;
-    height:60px;
-    background:#e21d25;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    margin:0 auto 15px;
-    font-size:24px;
-    font-weight:bold;
-}
-
-.program h3{
-    font-size:15px;
-    margin-bottom:10px;
-}
-
-.program p{
-    color:#666;
-    font-size:11px;
-    line-height:1.7;
-}
-
-
-/* =========================
-   PLANS
-========================= */
-
-.plans{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.plan{
-    background:#fff;
-    border:1px solid #ccc;
-    border-radius:6px;
-    padding:22px 15px;
-    text-align:center;
-}
-
 .plan h3{
-    font-size:13px;
-    margin-bottom:5px;
+    font-size:17px;
 }
 
 .price{
-    font-size:28px;
-    font-weight:900;
-    margin-top:10px;
+    font-size:30px;
+    font-weight:bold;
+    margin:15px 0 3px;
 }
 
-.small{
-    font-size:10px;
+.duration{
     color:#777;
+    font-size:12px;
 }
 
 .plan ul{
     list-style:none;
     text-align:left;
-    padding:15px 0;
-    margin:0;
-    font-size:10px;
-    line-height:2;
+    margin:20px 0;
     color:#555;
+    font-size:12px;
+    line-height:2;
 }
 
 .plan button{
-    border:0;
     background:#e21d25;
-    color:#fff;
-    font-size:10px;
-    font-weight:bold;
+    color:white;
+    border:0;
+    padding:10px 15px;
     border-radius:4px;
-    padding:9px 12px;
+    font-weight:bold;
     cursor:pointer;
 }
 
-
-/* =========================
-   TRAINERS
-========================= */
+/* TRAINERS */
 
 .trainers{
+    max-width:1000px;
+    margin:auto;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    max-width:850px;
-    margin:auto;
+    gap:20px;
 }
 
 .trainer{
-    text-align:center;
-    background:#f7f7f7;
-    border:1px solid #ccc;
+    background:#f5f5f5;
+    border:1px solid #ddd;
     border-radius:6px;
+    text-align:center;
     overflow:hidden;
 }
 
-.person{
-    height:180px;
-    background:
-    linear-gradient(
-        135deg,
-        #111,
-        #444
-    );
+.trainer-img{
+    height:190px;
+    background:linear-gradient(135deg,#111,#555);
     position:relative;
 }
 
-.person::before{
+.trainer-img:before{
     content:"";
     position:absolute;
-    width:70px;
-    height:70px;
+    width:65px;
+    height:65px;
     border-radius:50%;
     background:#aaa;
     top:25px;
-    left:calc(50% - 35px);
+    left:calc(50% - 32px);
 }
 
-.person::after{
+.trainer-img:after{
     content:"";
     position:absolute;
     width:125px;
     height:105px;
-    border-radius:65px 65px 0 0;
     background:#777;
+    border-radius:70px 70px 0 0;
     bottom:0;
     left:calc(50% - 62px);
 }
 
 .trainer h3{
-    font-size:14px;
-    margin:12px 0 5px;
+    margin:15px 0 5px;
 }
 
 .trainer p{
-    font-size:10px;
     color:#666;
-    margin-bottom:5px;
+    font-size:12px;
 }
 
 .trainer span{
     display:block;
-    font-size:10px;
-    color:#555;
-    margin-bottom:15px;
+    margin:8px 0 18px;
+    font-size:12px;
 }
 
+/* REGISTRATION */
 
-/* =========================
-   REGISTRATION
-========================= */
-
-.registration{
-    background:#fafafa;
-    border-top:1px solid #ddd;
+.registration-box{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:6px;
+    padding:25px;
 }
 
 .form{
-    max-width:900px;
-    margin:auto;
-    border:1px solid #ccc;
-    background:#fff;
-    border-radius:6px;
-    padding:25px;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:18px;
 }
 
 .form label{
-    font-size:11px;
+    font-size:12px;
     font-weight:bold;
 }
 
 .form input,
 .form select{
-    display:block;
     width:100%;
-    margin-top:6px;
-    border:1px solid #ddd;
-    border-radius:4px;
     padding:11px;
-    font-size:11px;
-    background:#fff;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:4px;
 }
 
-.register{
+.form button{
     grid-column:1/-1;
     justify-self:center;
 }
 
-.msg{
+.message{
     text-align:center;
-    font-size:12px;
+    color:green;
     font-weight:bold;
-    margin:15px;
-    color:#238345;
+    margin-top:15px;
 }
 
+/* DASHBOARD */
 
-/* =========================
-   DASHBOARD
-========================= */
+.dashboard{
+    background:#f3f3f3;
+}
 
-.dashboardArea{
+.dashboard-layout{
+    max-width:1200px;
+    margin:auto;
     display:grid;
     grid-template-columns:180px 1fr;
     background:#f3f3f3;
-    border-top:1px solid #aaa;
 }
 
-.side{
-    background:#0b0b0b;
-    color:#fff;
-    min-height:700px;
+.sidebar{
+    background:#090909;
+    color:white;
+    min-height:550px;
     padding:20px 10px;
 }
 
-.sideTitle{
-    font-size:14px;
-    font-weight:bold;
+.sidebar h3{
     padding:10px;
     margin-bottom:10px;
 }
 
-.side a{
+.sidebar a{
     display:block;
     color:#ddd;
     text-decoration:none;
-    font-size:10px;
     padding:12px 10px;
-    border-radius:4px;
+    font-size:12px;
 }
 
-.side a:hover,
-.side a.active{
+.sidebar a:hover{
     background:#e21d25;
-    color:#fff;
 }
 
-.dash{
-    padding:20px;
-}
-
-.dashHead{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.dashHead h2{
-    font-size:22px;
-}
-
-.dashHead p{
-    font-size:10px;
-    color:#777;
-}
-
-.date{
-    font-size:10px;
-    background:#fff;
-    border:1px solid #ddd;
-    padding:8px 12px;
-    border-radius:15px;
+.dashboard-content{
+    padding:25px;
 }
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin:15px 0;
-}
-
-.stat,
-.box{
-    background:#fff;
-    border:1px solid #ccc;
-    border-radius:5px;
+    gap:12px;
+    margin:20px 0;
 }
 
 .stat{
-    padding:15px;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:20px;
 }
 
-.stat label{
-    font-size:10px;
+.stat p{
     color:#777;
+    font-size:11px;
 }
 
 .stat strong{
     display:block;
-    font-size:22px;
+    font-size:25px;
     margin-top:8px;
 }
 
-.stat i{
+.stat span{
     color:#e21d25;
-    font-style:normal;
 }
 
-.topDash{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:10px;
-    margin-bottom:10px;
+.dashboard-box{
+    background:white;
+    border:1px solid #ccc;
+    padding:20px;
+    border-radius:5px;
+    margin-bottom:15px;
 }
 
-.box{
-    padding:15px;
-}
-
-.box h3{
-    font-size:12px;
-    margin-bottom:12px;
-}
-
-.graph{
-    height:160px;
-    border-left:1px solid #ddd;
-    border-bottom:1px solid #ddd;
-    background:
-    repeating-linear-gradient(
-        to bottom,
-        #fff 0 30px,
-        #eee 31px
-    );
-}
-
-.pie{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:
-    conic-gradient(
-        #e21d25 0 43%,
-        #35a853 43% 74%,
-        #f2b233 74%
-    );
-    margin:15px auto;
-}
-
-.legend{
-    text-align:center;
-    font-size:9px;
-}
-
-.scroll{
-    overflow:auto;
+.dashboard-box h3{
+    font-size:15px;
+    margin-bottom:15px;
 }
 
 table{
     width:100%;
-    min-width:650px;
     border-collapse:collapse;
 }
 
-th,
-td{
-    font-size:10px;
+th,td{
+    padding:12px 8px;
     text-align:left;
-    padding:10px 7px;
     border-bottom:1px solid #eee;
+    font-size:12px;
 }
 
 th{
-    background:#fafafa;
+    background:#f5f5f5;
 }
 
-em{
-    font-style:normal;
-    padding:4px 7px;
-    border-radius:3px;
-    font-size:8px;
+.active{
+    color:green;
+    font-weight:bold;
 }
 
-.ok{
-    background:#e3f4e8;
-    color:#238345;
+.pending{
+    color:#d18a00;
+    font-weight:bold;
 }
 
-.bad{
-    background:#ffe4e4;
-    color:#d5232b;
-}
-
-.wait{
-    background:#fff0d1;
-    color:#bd8300;
-}
-
-
-/* =========================
-   DATABASE
-========================= */
+/* DATABASE */
 
 .database{
-    border-top:2px dashed #888;
+    max-width:1150px;
+    margin:auto;
 }
 
-.database h2{
-    text-align:center;
-    font-size:25px;
-    margin-bottom:30px;
-}
-
-.database h2 span{
-    color:#e21d25;
-}
-
-.schema{
+.database-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
 
-.db{
+.database-card{
     border:1px solid #aaa;
     border-radius:5px;
     overflow:hidden;
-    background:#fff;
+    background:white;
 }
 
-.db h3{
-    margin:0;
-    padding:10px;
+.database-card h3{
     background:#17638d;
-    color:#fff;
+    color:white;
     text-align:center;
+    padding:12px;
+    font-size:13px;
+}
+
+.database-card p{
+    padding:9px 12px;
+    border-bottom:1px solid #eee;
     font-size:11px;
 }
 
-.db p{
-    margin:0;
-    padding:8px 10px;
-    font-size:9px;
-    border-bottom:1px solid #eee;
-}
-
-
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact{
+    max-width:1000px;
+    margin:auto;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
-.contactBox{
+.contact-info{
     background:#111;
-    color:#fff;
-    padding:25px;
-    border-radius:6px;
+    color:white;
+    padding:30px;
+    border-radius:5px;
 }
 
-.contactBox h3{
-    font-size:18px;
+.contact-info h3{
     margin-bottom:15px;
 }
 
-.contactBox p{
-    font-size:11px;
+.contact-info p{
     color:#ccc;
+    font-size:13px;
     line-height:2;
 }
 
-.contactForm{
+.contact-form{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:12px;
 }
 
-.contactForm input,
-.contactForm textarea{
-    width:100%;
-    padding:11px;
+.contact-form input,
+.contact-form textarea{
+    padding:12px;
     border:1px solid #ccc;
     border-radius:4px;
-    font-size:11px;
 }
 
-.contactForm textarea{
-    height:110px;
+.contact-form textarea{
+    height:120px;
     resize:none;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
-
 footer{
-    text-align:center;
-    background:#080808;
+    background:#050505;
     color:#aaa;
-    padding:20px;
-    font-size:10px;
+    text-align:center;
+    padding:25px;
+    font-size:12px;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:800px){
 
     header{
-        padding:0 12px;
-        gap:10px;
+        padding:12px;
+        flex-wrap:wrap;
     }
 
     nav{
-        display:none;
+        order:3;
+        width:100%;
+        overflow-x:auto;
+        justify-content:flex-start;
+        padding:10px 0;
+        gap:18px;
     }
 
-    .heroText{
+    .hero-content{
         width:100%;
-    }
-
-    .hero::after{
-        opacity:.35;
-        width:100%;
+        padding:40px 25px;
     }
 
     .hero h1{
-        font-size:38px;
+        font-size:40px;
     }
 
-    .about,
-    .contact{
+    .hero:after{
+        width:100%;
+        opacity:.3;
+    }
+
+    .about{
         grid-template-columns:1fr;
     }
 
-    .programs{
+    .cards{
         grid-template-columns:1fr;
     }
 
     .plans{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
     }
 
     .trainers{
         grid-template-columns:1fr;
-        max-width:350px;
     }
 
-    .dashboardArea{
+    .dashboard-layout{
         grid-template-columns:1fr;
     }
 
-    .side{
+    .sidebar{
         min-height:auto;
     }
 
     .stats{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
     }
 
-    .schema{
-        grid-template-columns:repeat(2,1fr);
+    .database-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .topDash{
+    .contact{
         grid-template-columns:1fr;
     }
 }
 
+@media(max-width:500px){
 
-@media(max-width:520px){
-
-    section{
-        padding:40px 15px;
+    .logo{
+        font-size:18px;
     }
 
-    .plans,
-    .schema,
+    .join{
+        margin-left:auto;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .plans{
+        grid-template-columns:1fr;
+    }
+
     .form{
         grid-template-columns:1fr;
     }
 
-    .register{
+    .form button{
         grid-column:auto;
-    }
-
-    .hero{
-        min-height:390px;
-    }
-
-    .hero h1{
-        font-size:31px;
     }
 
     .stats{
         grid-template-columns:1fr 1fr;
     }
 
-    .aboutCards{
-        grid-template-columns:1fr 1fr;
+    .database-grid{
+        grid-template-columns:1fr;
     }
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<div class="wrap">
-
-
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -905,7 +715,6 @@ footer{
     </div>
 
     <nav>
-
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#programs">Programs</a>
@@ -914,41 +723,36 @@ footer{
         <a href="#registration">Register</a>
         <a href="#dashboard">Dashboard</a>
         <a href="#contact">Contact</a>
-
     </nav>
 
     <a class="join" href="#registration">
-        JOIN NOW
+        Join Now
     </a>
 
 </header>
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- HOME -->
 
 <section id="home" class="hero">
 
-    <div class="heroText">
+    <div class="hero-content">
 
-        <div class="heroBrand">
+        <div class="hero-small">
             ✚ GYM FIT
         </div>
 
         <h1>
-            BUILD YOUR
-            <br>
+            BUILD YOUR<br>
             STRONGER SELF
         </h1>
 
         <p>
-            Get fit, stay healthy and
-            <br>
+            Get fit, stay healthy and<br>
             live a better life.
         </p>
 
-        <a class="red" href="#registration">
+        <a class="red-btn" href="#registration">
             JOIN NOW
         </a>
 
@@ -957,68 +761,62 @@ footer{
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ABOUT -->
 
 <section id="about">
 
-    <h2 class="title">
-        ABOUT GYM FIT
-    </h2>
+    <h2 class="title">ABOUT GYM FIT</h2>
 
     <p class="subtitle">
-        GYM FIT is a gym management system designed to
-        manage members, trainers, memberships, payments
-        and attendance in one place.
+        A simple gym management system for managing
+        members, trainers, memberships, payments and attendance.
     </p>
 
     <div class="about">
 
-        <div class="aboutBox">
+        <div>
 
-            <h3>
+            <h2>
                 YOUR FITNESS,
                 <span style="color:#e21d25;">
                     OUR MISSION
                 </span>
-            </h3>
+            </h2>
 
             <p>
-                Our goal is to provide a simple and
-                organized system for managing a modern gym.
+                GYM FIT provides an organized platform for
+                managing a modern gym.
             </p>
 
             <p>
-                Members can choose membership plans,
-                register their details and view gym
-                information easily.
+                Members can view plans, register their details
+                and access gym information easily.
             </p>
 
-            <a class="red" href="#plans">
+            <a class="red-btn" href="#plans">
                 VIEW PLANS
             </a>
 
         </div>
 
-        <div class="aboutCards">
+        <div class="about-stats">
 
-            <div class="aboutCard">
+            <div class="about-card">
                 <strong>500+</strong>
                 <span>Members</span>
             </div>
 
-            <div class="aboutCard">
+            <div class="about-card">
                 <strong>3</strong>
                 <span>Trainers</span>
             </div>
 
-            <div class="aboutCard">
+            <div class="about-card">
                 <strong>4</strong>
                 <span>Plans</span>
             </div>
 
-            <div class="aboutCard">
+            <div class="about-card">
                 <strong>24/7</strong>
                 <span>Management</span>
             </div>
@@ -1030,73 +828,43 @@ footer{
 </section>
 
 
-<!-- =========================
-     PROGRAMS
-========================= -->
+<!-- PROGRAMS -->
 
 <section id="programs" class="gray">
 
-    <h2 class="title">
-        OUR PROGRAMS
-    </h2>
+    <h2 class="title">OUR PROGRAMS</h2>
 
     <p class="subtitle">
-        Choose a program according to your fitness goals.
+        Training programs designed for different fitness goals.
     </p>
 
-    <div class="programs">
+    <div class="cards">
 
-        <div class="program">
-
-            <div class="programIcon">
-                💪
-            </div>
-
-            <h3>
-                STRENGTH TRAINING
-            </h3>
-
+        <div class="card">
+            <div class="icon">💪</div>
+            <h3>STRENGTH TRAINING</h3>
             <p>
-                Improve strength and build a strong
-                fitness foundation with guided workouts.
+                Improve strength and build a strong fitness
+                foundation with guided workouts.
             </p>
-
         </div>
 
-
-        <div class="program">
-
-            <div class="programIcon">
-                🏃
-            </div>
-
-            <h3>
-                CARDIO FITNESS
-            </h3>
-
+        <div class="card">
+            <div class="icon">🏃</div>
+            <h3>CARDIO FITNESS</h3>
             <p>
-                Improve endurance and maintain an
-                active and healthy lifestyle.
+                Improve endurance and maintain an active
+                and healthy lifestyle.
             </p>
-
         </div>
 
-
-        <div class="program">
-
-            <div class="programIcon">
-                🏋
-            </div>
-
-            <h3>
-                BODYBUILDING
-            </h3>
-
+        <div class="card">
+            <div class="icon">🏋</div>
+            <h3>BODYBUILDING</h3>
             <p>
-                Structured training focused on
-                strength, fitness and muscle development.
+                Structured training focused on strength,
+                fitness and muscle development.
             </p>
-
         </div>
 
     </div>
@@ -1104,38 +872,29 @@ footer{
 </section>
 
 
-<!-- =========================
-     PLANS
-========================= -->
+<!-- PLANS -->
 
 <section id="plans" class="gray">
 
-    <h2 class="title">
-        MEMBERSHIP PLANS
-    </h2>
+    <h2 class="title">MEMBERSHIP PLANS</h2>
 
     <div class="plans">
-
 
         <div class="plan">
 
             <h3>MONTHLY</h3>
 
-            <div class="price">
-                ₹999
-            </div>
+            <div class="price">₹999</div>
 
-            <div class="small">
-                /month
-            </div>
+            <div class="duration">/month</div>
 
             <ul>
-                <li>• Gym Access</li>
-                <li>• Basic Support</li>
-                <li>• 1 Month Validity</li>
+                <li>✓ Gym Access</li>
+                <li>✓ Basic Support</li>
+                <li>✓ 1 Month Validity</li>
             </ul>
 
-            <button onclick="choosePlan('Monthly')">
+            <button onclick="selectPlan('Monthly')">
                 CHOOSE PLAN
             </button>
 
@@ -1146,21 +905,17 @@ footer{
 
             <h3>3 MONTHS</h3>
 
-            <div class="price">
-                ₹2499
-            </div>
+            <div class="price">₹2499</div>
 
-            <div class="small">
-                /3 months
-            </div>
+            <div class="duration">/3 months</div>
 
             <ul>
-                <li>• Gym Access</li>
-                <li>• Diet Plan</li>
-                <li>• 3 Months Validity</li>
+                <li>✓ Gym Access</li>
+                <li>✓ Diet Plan</li>
+                <li>✓ 3 Months Validity</li>
             </ul>
 
-            <button onclick="choosePlan('3 Months')">
+            <button onclick="selectPlan('3 Months')">
                 CHOOSE PLAN
             </button>
 
@@ -1171,22 +926,18 @@ footer{
 
             <h3>6 MONTHS</h3>
 
-            <div class="price">
-                ₹4799
-            </div>
+            <div class="price">₹4799</div>
 
-            <div class="small">
-                /6 months
-            </div>
+            <div class="duration">/6 months</div>
 
             <ul>
-                <li>• Gym Access</li>
-                <li>• Diet Plan</li>
-                <li>• Personal Training</li>
-                <li>• 6 Months Validity</li>
+                <li>✓ Gym Access</li>
+                <li>✓ Diet Plan</li>
+                <li>✓ Personal Training</li>
+                <li>✓ 6 Months Validity</li>
             </ul>
 
-            <button onclick="choosePlan('6 Months')">
+            <button onclick="selectPlan('6 Months')">
                 CHOOSE PLAN
             </button>
 
@@ -1197,22 +948,18 @@ footer{
 
             <h3>1 YEAR</h3>
 
-            <div class="price">
-                ₹7999
-            </div>
+            <div class="price">₹7999</div>
 
-            <div class="small">
-                /year
-            </div>
+            <div class="duration">/year</div>
 
             <ul>
-                <li>• Gym Access</li>
-                <li>• Diet Plan</li>
-                <li>• Personal Training</li>
-                <li>• 12 Months Validity</li>
+                <li>✓ Gym Access</li>
+                <li>✓ Diet Plan</li>
+                <li>✓ Personal Training</li>
+                <li>✓ 12 Months Validity</li>
             </ul>
 
-            <button onclick="choosePlan('1 Year')">
+            <button onclick="selectPlan('1 Year')">
                 CHOOSE PLAN
             </button>
 
@@ -1223,504 +970,241 @@ footer{
 </section>
 
 
-<!-- =========================
-     TRAINERS
-========================= -->
+<!-- TRAINERS -->
 
 <section id="trainers">
 
-    <h2 class="title">
-        OUR TRAINERS
-    </h2>
+    <h2 class="title">OUR TRAINERS</h2>
 
     <div class="trainers">
 
-
         <div class="trainer">
 
-            <div class="person"></div>
+            <div class="trainer-img"></div>
 
-            <h3>
-                Rohit Sharma
-            </h3>
+            <h3>Rohit Sharma</h3>
 
-            <p>
-                Strength Trainer
-            </p>
+            <p>Strength Trainer</p>
 
-            <span>
-                ☎ 9876543210
-            </span>
+            <span>☎ 9876543210</span>
 
         </div>
 
 
         <div class="trainer">
 
-            <div class="person"></div>
+            <div class="trainer-img"></div>
 
-            <h3>
-                Ananya Singh
-            </h3>
+            <h3>Ananya Singh</h3>
 
-            <p>
-                Fitness Coach
-            </p>
+            <p>Fitness Coach</p>
 
-            <span>
-                ☎ 9123456780
-            </span>
+            <span>☎ 9123456780</span>
 
         </div>
 
 
         <div class="trainer">
 
-            <div class="person"></div>
+            <div class="trainer-img"></div>
 
-            <h3>
-                Vikram Patel
-            </h3>
+            <h3>Vikram Patel</h3>
 
-            <p>
-                Bodybuilding Coach
-            </p>
+            <p>Bodybuilding Coach</p>
 
-            <span>
-                ☎ 9988776655
-            </span>
+            <span>☎ 9988776655</span>
 
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     REGISTRATION
-========================= -->
+<!-- REGISTRATION -->
 
-<section id="registration" class="registration">
+<section id="registration" class="registration gray">
 
-    <h2 class="title">
-        MEMBER REGISTRATION
-    </h2>
+    <h2 class="title">MEMBER REGISTRATION</h2>
 
     <p class="subtitle">
-        Register a new gym member using the form below.
+        Register a new gym member.
     </p>
 
-    <form class="form" id="registrationForm">
+    <div class="registration-box">
 
+        <form class="form" id="registrationForm">
 
-        <label>
+            <label>
+                Full Name
+                <input type="text" required>
+            </label>
 
-            Full Name
+            <label>
+                Phone Number
+                <input type="tel" required>
+            </label>
 
-            <input
-                type="text"
-                id="fullName"
-                placeholder="Enter full name"
-                required>
+            <label>
+                Email
+                <input type="email" required>
+            </label>
 
-        </label>
+            <label>
+                Date of Birth
+                <input type="date" required>
+            </label>
 
+            <label>
+                Address
+                <input type="text" required>
+            </label>
 
-        <label>
+            <label>
+                Gender
+                <select required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </label>
 
-            Phone Number
+            <label>
+                Membership Plan
+                <select id="planSelect" required>
+                    <option value="">Select Plan</option>
+                    <option>Monthly</option>
+                    <option>3 Months</option>
+                    <option>6 Months</option>
+                    <option>1 Year</option>
+                </select>
+            </label>
 
-            <input
-                type="tel"
-                id="phone"
-                placeholder="Enter phone number"
-                required>
+            <label>
+                Trainer
+                <select required>
+                    <option value="">Select Trainer</option>
+                    <option>Rohit Sharma</option>
+                    <option>Ananya Singh</option>
+                    <option>Vikram Patel</option>
+                </select>
+            </label>
 
-        </label>
+            <button class="red-btn" type="submit">
+                REGISTER MEMBER
+            </button>
 
+        </form>
 
-        <label>
+        <div class="message" id="message"></div>
 
-            Email
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter email"
-                required>
-
-        </label>
-
-
-        <label>
-
-            Date of Birth
-
-            <input
-                type="date"
-                required>
-
-        </label>
-
-
-        <label>
-
-            Address
-
-            <input
-                type="text"
-                placeholder="Enter address"
-                required>
-
-        </label>
-
-
-        <label>
-
-            Gender
-
-            <select required>
-
-                <option value="">
-                    Select Gender
-                </option>
-
-                <option>
-                    Male
-                </option>
-
-                <option>
-                    Female
-                </option>
-
-                <option>
-                    Other
-                </option>
-
-            </select>
-
-        </label>
-
-
-        <label>
-
-            Choose Plan
-
-            <select id="selectedPlan" required>
-
-                <option value="">
-                    Select Plan
-                </option>
-
-                <option>
-                    Monthly
-                </option>
-
-                <option>
-                    3 Months
-                </option>
-
-                <option>
-                    6 Months
-                </option>
-
-                <option>
-                    1 Year
-                </option>
-
-            </select>
-
-        </label>
-
-
-        <label>
-
-            Trainer
-
-            <select required>
-
-                <option value="">
-                    Select Trainer
-                </option>
-
-                <option>
-                    Rohit Sharma
-                </option>
-
-                <option>
-                    Ananya Singh
-                </option>
-
-                <option>
-                    Vikram Patel
-                </option>
-
-            </select>
-
-        </label>
-
-
-        <button
-            class="red register"
-            type="submit">
-
-            REGISTER MEMBER
-
-        </button>
-
-    </form>
-
-    <div
-        class="msg"
-        id="registrationMessage">
     </div>
 
 </section>
 
 
-<!-- =========================
-     DASHBOARD
-========================= -->
+<!-- DASHBOARD -->
 
-<section id="dashboard" style="padding:0;">
+<section id="dashboard" class="dashboard">
 
-    <div class="dashboardArea">
+    <h2 class="title">GYM DASHBOARD</h2>
 
+    <div class="dashboard-layout">
 
-        <aside class="side">
+        <aside class="sidebar">
 
-            <div class="sideTitle">
-                GYM FIT
-            </div>
+            <h3>GYM FIT</h3>
 
-            <a class="active" href="#dashboard">
-                Dashboard
-            </a>
-
-            <a href="#registration">
-                Members
-            </a>
-
-            <a href="#plans">
-                Memberships
-            </a>
-
-            <a href="#trainers">
-                Trainers
-            </a>
-
-            <a href="#contact">
-                Payments
-            </a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#registration">Members</a>
+            <a href="#plans">Memberships</a>
+            <a href="#trainers">Trainers</a>
+            <a href="#contact">Payments</a>
 
         </aside>
 
 
-        <div class="dash">
+        <div class="dashboard-content">
 
-            <div class="dashHead">
+            <h2>Dashboard</h2>
 
-                <div>
-
-                    <h2>
-                        Dashboard
-                    </h2>
-
-                    <p>
-                        Gym Management System
-                    </p>
-
-                </div>
-
-                <div class="date">
-                    Today
-                </div>
-
-            </div>
+            <p style="color:#777;font-size:12px;">
+                Gym Management System
+            </p>
 
 
             <div class="stats">
 
-
                 <div class="stat">
-
-                    <label>
-                        TOTAL MEMBERS
-                    </label>
-
-                    <strong>
-                        500
-                    </strong>
-
-                    <i>↗</i>
-
+                    <p>TOTAL MEMBERS</p>
+                    <strong>500</strong>
+                    <span>↗</span>
                 </div>
 
-
                 <div class="stat">
-
-                    <label>
-                        ACTIVE MEMBERS
-                    </label>
-
-                    <strong>
-                        420
-                    </strong>
-
-                    <i>↗</i>
-
+                    <p>ACTIVE MEMBERS</p>
+                    <strong>420</strong>
+                    <span>↗</span>
                 </div>
 
-
                 <div class="stat">
-
-                    <label>
-                        TRAINERS
-                    </label>
-
-                    <strong>
-                        3
-                    </strong>
-
-                    <i>★</i>
-
+                    <p>TRAINERS</p>
+                    <strong>3</strong>
+                    <span>★</span>
                 </div>
 
-
                 <div class="stat">
-
-                    <label>
-                        MONTHLY REVENUE
-                    </label>
-
-                    <strong>
-                        ₹85K
-                    </strong>
-
-                    <i>₹</i>
-
+                    <p>MONTHLY REVENUE</p>
+                    <strong>₹85K</strong>
+                    <span>₹</span>
                 </div>
-
 
             </div>
 
 
-            <div class="topDash">
+            <div class="dashboard-box">
 
+                <h3>RECENT MEMBERS</h3>
 
-                <div class="box">
-
-                    <h3>
-                        MEMBERSHIP OVERVIEW
-                    </h3>
-
-                    <div class="graph">
-
-                        <svg
-                            viewBox="0 0 500 160"
-                            preserveAspectRatio="none">
-
-                            <polyline
-                                points="0,125 70,105 140,115 210,70 280,90 350,45 420,60 500,25"
-                                fill="none"
-                                stroke="#e21d25"
-                                stroke-width="3"/>
-
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div class="box">
-
-                    <h3>
-                        MEMBERSHIP STATUS
-                    </h3>
-
-                    <div class="pie"></div>
-
-                    <div class="legend">
-                        Active &nbsp; Expired &nbsp; Pending
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="box">
-
-                <h3>
-                    RECENT MEMBERS
-                </h3>
-
-                <div class="scroll">
+                <div style="overflow-x:auto;">
 
                     <table>
 
-                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Plan</th>
+                            <th>Status</th>
+                        </tr>
 
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Plan</th>
-                                <th>Status</th>
-                            </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Rahul</td>
+                            <td>Monthly</td>
+                            <td class="active">Active</td>
+                        </tr>
 
-                        </thead>
+                        <tr>
+                            <td>002</td>
+                            <td>Priya</td>
+                            <td>3 Months</td>
+                            <td class="active">Active</td>
+                        </tr>
 
-                        <tbody>
+                        <tr>
+                            <td>003</td>
+                            <td>Arjun</td>
+                            <td>6 Months</td>
+                            <td class="pending">Pending</td>
+                        </tr>
 
-                            <tr>
-                                <td>001</td>
-                                <td>Rahul</td>
-                                <td>Monthly</td>
-                                <td>
-                                    <em class="ok">
-                                        Active
-                                    </em>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>002</td>
-                                <td>Priya</td>
-                                <td>3 Months</td>
-                                <td>
-                                    <em class="ok">
-                                        Active
-                                    </em>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>003</td>
-                                <td>Arjun</td>
-                                <td>6 Months</td>
-                                <td>
-                                    <em class="wait">
-                                        Pending
-                                    </em>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>004</td>
-                                <td>Neha</td>
-                                <td>1 Year</td>
-                                <td>
-                                    <em class="bad">
-                                        Expired
-                                    </em>
-                                </td>
-                            </tr>
-
-                        </tbody>
+                        <tr>
+                            <td>004</td>
+                            <td>Neha</td>
+                            <td>1 Year</td>
+                            <td>Expired</td>
+                        </tr>
 
                     </table>
 
@@ -1735,148 +1219,94 @@ footer{
 </section>
 
 
-<!-- =========================
-     DATABASE
-========================= -->
+<!-- DATABASE -->
 
-<section class="database">
+<section>
 
-    <h2>
-        <span>GYM FIT</span>
-        DATABASE DESIGN
+    <h2 class="title">
+        GYM FIT DATABASE DESIGN
     </h2>
 
-    <div class="schema">
+    <p class="subtitle">
+        Database tables used for the gym management system.
+    </p>
 
+    <div class="database-grid">
 
-        <div class="db">
-
-            <h3>
-                MEMBERSHIP_PLANS
-            </h3>
-
+        <div class="database-card">
+            <h3>MEMBERSHIP_PLANS</h3>
             <p>plan_id : INT</p>
             <p>plan_name : VARCHAR</p>
             <p>price : DECIMAL</p>
             <p>duration : INT</p>
-
         </div>
 
-
-        <div class="db">
-
-            <h3>
-                MEMBERS
-            </h3>
-
+        <div class="database-card">
+            <h3>MEMBERS</h3>
             <p>member_id : INT</p>
             <p>name : VARCHAR</p>
             <p>phone : VARCHAR</p>
             <p>email : VARCHAR</p>
             <p>plan_id : INT</p>
-
         </div>
 
-
-        <div class="db">
-
-            <h3>
-                TRAINERS
-            </h3>
-
+        <div class="database-card">
+            <h3>TRAINERS</h3>
             <p>trainer_id : INT</p>
             <p>trainer_name : VARCHAR</p>
             <p>specialization : VARCHAR</p>
             <p>phone : VARCHAR</p>
-
         </div>
 
-
-        <div class="db">
-
-            <h3>
-                TRAINER_ASSIGNMENT
-            </h3>
-
+        <div class="database-card">
+            <h3>TRAINER_ASSIGNMENT</h3>
             <p>assignment_id : INT</p>
             <p>member_id : INT</p>
             <p>trainer_id : INT</p>
-
         </div>
 
-
-        <div class="db">
-
-            <h3>
-                PAYMENTS
-            </h3>
-
+        <div class="database-card">
+            <h3>PAYMENTS</h3>
             <p>payment_id : INT</p>
             <p>member_id : INT</p>
             <p>amount : DECIMAL</p>
             <p>payment_date : DATE</p>
-
         </div>
 
-
-        <div class="db">
-
-            <h3>
-                ATTENDANCE
-            </h3>
-
+        <div class="database-card">
+            <h3>ATTENDANCE</h3>
             <p>attendance_id : INT</p>
             <p>member_id : INT</p>
             <p>attendance_date : DATE</p>
             <p>status : VARCHAR</p>
-
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- CONTACT -->
 
-<section id="contact">
+<section id="contact" class="gray">
 
-    <h2 class="title">
-        CONTACT US
-    </h2>
+    <h2 class="title">CONTACT US</h2>
 
     <div class="contact">
 
+        <div class="contact-info">
 
-        <div class="contactBox">
+            <h3>GYM FIT</h3>
 
-            <h3>
-                GYM FIT
-            </h3>
-
-            <p>
-                📍 Gym Management System
-            </p>
-
-            <p>
-                ☎ Contact: 9876543210
-            </p>
-
-            <p>
-                ✉ Email: gymfit@example.com
-            </p>
-
-            <p>
-                🕒 Monday - Sunday
-            </p>
+            <p>📍 Gym Management System</p>
+            <p>☎ 9876543210</p>
+            <p>✉ gymfit@example.com</p>
+            <p>🕒 Monday - Sunday</p>
 
         </div>
 
 
-        <form class="contactForm">
+        <form class="contact-form" id="contactForm">
 
             <input
                 type="text"
@@ -1892,66 +1322,48 @@ footer{
                 placeholder="Your Message"
                 required></textarea>
 
-            <button
-                class="red"
-                type="submit">
-
+            <button class="red-btn" type="submit">
                 SEND MESSAGE
-
             </button>
 
         </form>
-
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
     GYM MANAGEMENT SYSTEM – WEBSITE
-    <br>
+    <br><br>
     © 2026 GYM FIT
 
 </footer>
 
 
-</div>
-
-
 <script>
 
-/* =========================
-   CHOOSE PLAN
-========================= */
+function selectPlan(plan){
 
-function choosePlan(plan){
+    document.getElementById("planSelect").value = plan;
 
-    document.getElementById("selectedPlan").value = plan;
-
-    document.getElementById("registration").scrollIntoView({
-        behavior:"smooth"
-    });
-
+    document.getElementById("registration")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 }
 
 
-/* =========================
-   REGISTRATION
-========================= */
-
 document
 .getElementById("registrationForm")
-.addEventListener("submit", function(event){
+.addEventListener("submit",function(e){
 
-    event.preventDefault();
+    e.preventDefault();
 
-    document.getElementById("registrationMessage").textContent =
+    document.getElementById("message").textContent =
         "✓ Member registered successfully!";
 
     this.reset();
@@ -1959,24 +1371,19 @@ document
 });
 
 
-/* =========================
-   CONTACT FORM
-========================= */
-
 document
-.querySelector(".contactForm")
-.addEventListener("submit", function(event){
+.getElementById("contactForm")
+.addEventListener("submit",function(e){
 
-    event.preventDefault();
+    e.preventDefault();
 
-    alert("Thank you! Your message has been submitted.");
+    alert("Message submitted successfully!");
 
     this.reset();
 
 });
 
 </script>
-
 
 </body>
 </html>
