@@ -1561,6 +1561,45 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const loginScreen = document.getElementById("loginScreen");
+    const mainWebsite = document.getElementById("mainWebsite");
+    const loginForm = document.getElementById("loginForm");
+    const loginError = document.getElementById("loginError");
+
+    if (!loginForm) {
+        console.log("Login form not found");
+        return;
+    }
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const username =
+            document.getElementById("loginUsername").value.trim();
+
+        const password =
+            document.getElementById("loginPassword").value;
+
+        if (username === "admin" && password === "1234") {
+
+            loginScreen.style.display = "none";
+            mainWebsite.style.display = "block";
+
+            loginError.style.display = "none";
+
+        } else {
+
+            loginError.style.display = "block";
+
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>
