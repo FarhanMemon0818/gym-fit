@@ -1,254 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>GYM MANAGEMENT SYSTEM – WEBSITE</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>GYM FIT - Gym Management System</title>
 
 <style>
 
 /* =========================
-   LOGIN SCREEN
+   GENERAL
 ========================= */
 
-#loginScreen{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:
-        linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
-        radial-gradient(circle at top right,#e51b2a,transparent 40%),
-        #111;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-.login-card{
-    width:100%;
-    max-width:380px;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
     background:#fff;
-    border-radius:16px;
-    padding:32px 24px;
-    box-shadow:0 15px 50px rgba(0,0,0,.55);
-}
-
-.login-logo{
-    text-align:center;
-    font-size:28px;
-    font-weight:800;
-    margin-bottom:8px;
     color:#111;
 }
 
-.login-logo span{
-    color:#ed1c24;
+.wrap{
+    max-width:1280px;
+    margin:auto;
+    background:#fff;
 }
 
-.login-subtitle{
-    text-align:center;
-    color:#777;
-    margin-bottom:28px;
-    font-size:14px;
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:60px;
+    background:#090909;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    gap:25px;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.login-card label{
-    display:block;
-    font-weight:600;
-    color:#222;
-    margin-bottom:7px;
-    font-size:14px;
+.logo{
+    font-size:17px;
+    font-weight:900;
+    white-space:nowrap;
 }
 
-.login-card input{
-    width:100%;
-    padding:13px;
-    margin-bottom:18px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:15px;
-    outline:none;
+.logo span{
+    color:#e21d25;
 }
 
-.login-card input:focus{
-    border-color:#ed1c24;
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:22px;
+    flex:1;
 }
 
-.login-button{
-    width:100%;
-    padding:14px;
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#e21d25;
+}
+
+.join,
+.red{
+    display:inline-block;
+    background:#e21d25;
+    color:#fff;
     border:0;
-    border-radius:8px;
-    background:#ed1c24;
-    color:white;
-    font-size:15px;
-    font-weight:700;
+    border-radius:4px;
+    padding:10px 16px;
+    font-size:11px;
+    font-weight:bold;
+    text-decoration:none;
     cursor:pointer;
 }
 
-.login-button:hover{
-    background:#c9141c;
+.join:hover,
+.red:hover{
+    background:#c9161d;
 }
 
-.login-error{
-    display:none;
-    color:#e51b2a;
-    text-align:center;
-    margin-top:14px;
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:420px;
+    display:flex;
+    align-items:center;
+    color:#fff;
+
+    background:
+    linear-gradient(
+        90deg,
+        #000 0%,
+        #000 42%,
+        rgba(0,0,0,.75) 62%,
+        rgba(0,0,0,.25) 100%
+    );
+    
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    right:0;
+    top:0;
+    width:58%;
+    height:100%;
+
+    background:
+    radial-gradient(
+        circle at 55% 35%,
+        #777 0,
+        #333 20%,
+        #171717 45%,
+        #050505 75%
+    );
+
+    z-index:0;
+}
+
+.heroText{
+    position:relative;
+    z-index:1;
+    padding:55px 30px;
+    width:55%;
+}
+
+.heroBrand{
+    color:#e21d25;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:46px;
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.hero p{
+    color:#ddd;
     font-size:14px;
-    font-weight:600;
+    line-height:1.6;
+    margin-bottom:25px;
 }
 
-.login-demo{
-    margin-top:20px;
-    padding:12px;
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:55px 25px;
+}
+
+.gray{
     background:#f5f5f5;
-    border-radius:8px;
+}
+
+.title{
+    text-align:center;
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:30px;
+}
+
+.subtitle{
+    text-align:center;
+    max-width:700px;
+    margin:-15px auto 30px;
+    color:#666;
+    font-size:12px;
+    line-height:1.7;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
+}
+
+.aboutBox{
+    padding:20px;
+}
+
+.aboutBox h3{
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.aboutBox p{
+    color:#555;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.aboutCards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.aboutCard{
+    background:#111;
+    color:#fff;
+    padding:25px 15px;
+    border-radius:5px;
+    text-align:center;
+}
+
+.aboutCard strong{
+    display:block;
+    color:#e21d25;
+    font-size:24px;
+    margin-bottom:5px;
+}
+
+.aboutCard span{
+    font-size:11px;
+}
+
+
+/* =========================
+   PROGRAMS
+========================= */
+
+.programs{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.program{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:25px 18px;
+    text-align:center;
+}
+
+.programIcon{
+    width:60px;
+    height:60px;
+    background:#e21d25;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    margin:0 auto 15px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.program h3{
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.program p{
+    color:#666;
+    font-size:11px;
+    line-height:1.7;
+}
+
+
+/* =========================
+   PLANS
+========================= */
+
+.plans{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.plan{
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:6px;
+    padding:22px 15px;
+    text-align:center;
+}
+
+.plan h3{
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.price{
+    font-size:28px;
+    font-weight:900;
+    margin-top:10px;
+}
+
+.small{
+    font-size:10px;
+    color:#777;
+}
+
+.plan ul{
+    list-style:none;
+    text-align:left;
+    padding:15px 0;
+    margin:0;
+    font-size:10px;
+    line-height:2;
+    color:#555;
+}
+
+.plan button{
+    border:0;
+    background:#e21d25;
+    color:#fff;
+    font-size:10px;
+    font-weight:bold;
+    border-radius:4px;
+    padding:9px 12px;
+    cursor:pointer;
+}
+
+
+/* =========================
+   TRAINERS
+========================= */
+
+.trainers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    max-width:850px;
+    margin:auto;
+}
+
+.trainer{
+    text-align:center;
+    background:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:6px;
+    overflow:hidden;
+}
+
+.person{
+    height:180px;
+    background:
+    linear-gradient(
+        135deg,
+        #111,
+        #444
+    );
+    position:relative;
+}
+
+.person::before{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#aaa;
+    top:25px;
+    left:calc(50% - 35px);
+}
+
+.person::after{
+    content:"";
+    position:absolute;
+    width:125px;
+    height:105px;
+    border-radius:65px 65px 0 0;
+    background:#777;
+    bottom:0;
+    left:calc(50% - 62px);
+}
+
+.trainer h3{
+    font-size:14px;
+    margin:12px 0 5px;
+}
+
+.trainer p{
+    font-size:10px;
+    color:#666;
+    margin-bottom:5px;
+}
+
+.trainer span{
+    display:block;
+    font-size:10px;
+    color:#555;
+    margin-bottom:15px;
+}
+
+
+/* =========================
+   REGISTRATION
+========================= */
+
+.registration{
+    background:#fafafa;
+    border-top:1px solid #ddd;
+}
+
+.form{
+    max-width:900px;
+    margin:auto;
+    border:1px solid #ccc;
+    background:#fff;
+    border-radius:6px;
+    padding:25px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form label{
+    font-size:11px;
+    font-weight:bold;
+}
+
+.form input,
+.form select{
+    display:block;
+    width:100%;
+    margin-top:6px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    padding:11px;
+    font-size:11px;
+    background:#fff;
+}
+
+.register{
+    grid-column:1/-1;
+    justify-self:center;
+}
+
+.msg{
     text-align:center;
     font-size:12px;
-    color:#666;
+    font-weight:bold;
+    margin:15px;
+    color:#238345;
 }
 
-/* Hide complete website before login */
 
-#mainWebsite{
-    display:none;
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboardArea{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    background:#f3f3f3;
+    border-top:1px solid #aaa;
 }
 
-/* Mobile login */
+.side{
+    background:#0b0b0b;
+    color:#fff;
+    min-height:700px;
+    padding:20px 10px;
+}
 
-@media(max-width:500px){
+.sideTitle{
+    font-size:14px;
+    font-weight:bold;
+    padding:10px;
+    margin-bottom:10px;
+}
 
-    #loginScreen{
-        padding:16px;
+.side a{
+    display:block;
+    color:#ddd;
+    text-decoration:none;
+    font-size:10px;
+    padding:12px 10px;
+    border-radius:4px;
+}
+
+.side a:hover,
+.side a.active{
+    background:#e21d25;
+    color:#fff;
+}
+
+.dash{
+    padding:20px;
+}
+
+.dashHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.dashHead h2{
+    font-size:22px;
+}
+
+.dashHead p{
+    font-size:10px;
+    color:#777;
+}
+
+.date{
+    font-size:10px;
+    background:#fff;
+    border:1px solid #ddd;
+    padding:8px 12px;
+    border-radius:15px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:15px 0;
+}
+
+.stat,
+.box{
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.stat{
+    padding:15px;
+}
+
+.stat label{
+    font-size:10px;
+    color:#777;
+}
+
+.stat strong{
+    display:block;
+    font-size:22px;
+    margin-top:8px;
+}
+
+.stat i{
+    color:#e21d25;
+    font-style:normal;
+}
+
+.topDash{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.box{
+    padding:15px;
+}
+
+.box h3{
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.graph{
+    height:160px;
+    border-left:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        #fff 0 30px,
+        #eee 31px
+    );
+}
+
+.pie{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:
+    conic-gradient(
+        #e21d25 0 43%,
+        #35a853 43% 74%,
+        #f2b233 74%
+    );
+    margin:15px auto;
+}
+
+.legend{
+    text-align:center;
+    font-size:9px;
+}
+
+.scroll{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    min-width:650px;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    font-size:10px;
+    text-align:left;
+    padding:10px 7px;
+    border-bottom:1px solid #eee;
+}
+
+th{
+    background:#fafafa;
+}
+
+em{
+    font-style:normal;
+    padding:4px 7px;
+    border-radius:3px;
+    font-size:8px;
+}
+
+.ok{
+    background:#e3f4e8;
+    color:#238345;
+}
+
+.bad{
+    background:#ffe4e4;
+    color:#d5232b;
+}
+
+.wait{
+    background:#fff0d1;
+    color:#bd8300;
+}
+
+
+/* =========================
+   DATABASE
+========================= */
+
+.database{
+    border-top:2px dashed #888;
+}
+
+.database h2{
+    text-align:center;
+    font-size:25px;
+    margin-bottom:30px;
+}
+
+.database h2 span{
+    color:#e21d25;
+}
+
+.schema{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.db{
+    border:1px solid #aaa;
+    border-radius:5px;
+    overflow:hidden;
+    background:#fff;
+}
+
+.db h3{
+    margin:0;
+    padding:10px;
+    background:#17638d;
+    color:#fff;
+    text-align:center;
+    font-size:11px;
+}
+
+.db p{
+    margin:0;
+    padding:8px 10px;
+    font-size:9px;
+    border-bottom:1px solid #eee;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.contactBox{
+    background:#111;
+    color:#fff;
+    padding:25px;
+    border-radius:6px;
+}
+
+.contactBox h3{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.contactBox p{
+    font-size:11px;
+    color:#ccc;
+    line-height:2;
+}
+
+.contactForm{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.contactForm input,
+.contactForm textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    font-size:11px;
+}
+
+.contactForm textarea{
+    height:110px;
+    resize:none;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    background:#080808;
+    color:#aaa;
+    padding:20px;
+    font-size:10px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    header{
+        padding:0 12px;
+        gap:10px;
     }
 
-    .login-card{
-        padding:28px 20px;
+    nav{
+        display:none;
     }
 
-    .login-logo{
-        font-size:25px;
+    .heroText{
+        width:100%;
+    }
+
+    .hero::after{
+        opacity:.35;
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .about,
+    .contact{
+        grid-template-columns:1fr;
+    }
+
+    .programs{
+        grid-template-columns:1fr;
+    }
+
+    .plans{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .trainers{
+        grid-template-columns:1fr;
+        max-width:350px;
+    }
+
+    .dashboardArea{
+        grid-template-columns:1fr;
+    }
+
+    .side{
+        min-height:auto;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .schema{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .topDash{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media(max-width:520px){
+
+    section{
+        padding:40px 15px;
+    }
+
+    .plans,
+    .schema,
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .register{
+        grid-column:auto;
+    }
+
+    .hero{
+        min-height:390px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .aboutCards{
+        grid-template-columns:1fr 1fr;
     }
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- ==================================================
-     LOGIN SCREEN
-================================================== -->
 
-<div id="loginScreen">
-
-    <div class="login-card">
-
-        <div class="login-logo">
-            <span>✚</span> GYM FIT
-        </div>
-
-        <div class="login-subtitle">
-            Gym Management System
-        </div>
-
-        <form id="loginForm">
-
-            <label>Username</label>
-
-            <input
-                type="text"
-                id="loginUsername"
-                placeholder="Enter username"
-                required
-            >
-
-            <label>Password</label>
-
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter password"
-                required
-            >
-
-            <button class="login-button" type="submit">
-                LOGIN
-            </button>
-
-            <div id="loginError" class="login-error">
-                Invalid username or password
-            </div>
-
-        </form>
-
-        <div class="login-demo">
-            Demo Login<br>
-            Username: <b>admin</b><br>
-            Password: <b>1234</b>
-        </div>
-
-    </div>
-
-</div>
+<div class="wrap">
 
 
-<!-- ==================================================
-     COMPLETE GYM FIT WEBSITE
-================================================== -->
+<!-- =========================
+     HEADER
+========================= -->
 
-<div id="mainWebsite">
-
-<div class="page">
-
-<!-- ================= HEADER ================= -->
-
-<header class="site-header">
+<header>
 
     <div class="logo">
         <span>✚</span> GYM FIT
     </div>
 
     <nav>
-        <a class="active" href="#home">Home</a>
+
+        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#programs">Programs</a>
         <a href="#trainers">Trainers</a>
         <a href="#plans">Plans</a>
+        <a href="#registration">Register</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#contact">Contact</a>
+
     </nav>
 
     <a class="join" href="#registration">
-        Join Now
+        JOIN NOW
     </a>
 
 </header>
 
 
-<!-- ================= HOME ================= -->
+<!-- =========================
+     HOME
+========================= -->
 
 <section id="home" class="hero">
 
-    <div class="hero-text">
+    <div class="heroText">
 
-        <div class="hero-logo">
+        <div class="heroBrand">
             ✚ GYM FIT
         </div>
 
         <h1>
-            BUILD YOUR<br>
+            BUILD YOUR
+            <br>
             STRONGER SELF
         </h1>
 
         <p>
-            Get fit, stay healthy and<br>
+            Get fit, stay healthy and
+            <br>
             live a better life.
         </p>
 
-        <a class="red-btn" href="#registration">
+        <a class="red" href="#registration">
             JOIN NOW
         </a>
 
@@ -257,29 +957,185 @@
 </section>
 
 
-<!-- ================= MEMBERSHIP PLANS ================= -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-<section id="plans" class="plans-section">
+<section id="about">
 
-    <h2>MEMBERSHIP PLANS</h2>
+    <h2 class="title">
+        ABOUT GYM FIT
+    </h2>
+
+    <p class="subtitle">
+        GYM FIT is a gym management system designed to
+        manage members, trainers, memberships, payments
+        and attendance in one place.
+    </p>
+
+    <div class="about">
+
+        <div class="aboutBox">
+
+            <h3>
+                YOUR FITNESS,
+                <span style="color:#e21d25;">
+                    OUR MISSION
+                </span>
+            </h3>
+
+            <p>
+                Our goal is to provide a simple and
+                organized system for managing a modern gym.
+            </p>
+
+            <p>
+                Members can choose membership plans,
+                register their details and view gym
+                information easily.
+            </p>
+
+            <a class="red" href="#plans">
+                VIEW PLANS
+            </a>
+
+        </div>
+
+        <div class="aboutCards">
+
+            <div class="aboutCard">
+                <strong>500+</strong>
+                <span>Members</span>
+            </div>
+
+            <div class="aboutCard">
+                <strong>3</strong>
+                <span>Trainers</span>
+            </div>
+
+            <div class="aboutCard">
+                <strong>4</strong>
+                <span>Plans</span>
+            </div>
+
+            <div class="aboutCard">
+                <strong>24/7</strong>
+                <span>Management</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROGRAMS
+========================= -->
+
+<section id="programs" class="gray">
+
+    <h2 class="title">
+        OUR PROGRAMS
+    </h2>
+
+    <p class="subtitle">
+        Choose a program according to your fitness goals.
+    </p>
+
+    <div class="programs">
+
+        <div class="program">
+
+            <div class="programIcon">
+                💪
+            </div>
+
+            <h3>
+                STRENGTH TRAINING
+            </h3>
+
+            <p>
+                Improve strength and build a strong
+                fitness foundation with guided workouts.
+            </p>
+
+        </div>
+
+
+        <div class="program">
+
+            <div class="programIcon">
+                🏃
+            </div>
+
+            <h3>
+                CARDIO FITNESS
+            </h3>
+
+            <p>
+                Improve endurance and maintain an
+                active and healthy lifestyle.
+            </p>
+
+        </div>
+
+
+        <div class="program">
+
+            <div class="programIcon">
+                🏋
+            </div>
+
+            <h3>
+                BODYBUILDING
+            </h3>
+
+            <p>
+                Structured training focused on
+                strength, fitness and muscle development.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PLANS
+========================= -->
+
+<section id="plans" class="gray">
+
+    <h2 class="title">
+        MEMBERSHIP PLANS
+    </h2>
 
     <div class="plans">
+
 
         <div class="plan">
 
             <h3>MONTHLY</h3>
 
-            <b>₹999</b>
+            <div class="price">
+                ₹999
+            </div>
 
-            <small>/month</small>
+            <div class="small">
+                /month
+            </div>
 
             <ul>
-                <li>Gym Access</li>
-                <li>Basic Support</li>
-                <li>1 Month Validity</li>
+                <li>• Gym Access</li>
+                <li>• Basic Support</li>
+                <li>• 1 Month Validity</li>
             </ul>
 
-            <button data-plan="Monthly">
+            <button onclick="choosePlan('Monthly')">
                 CHOOSE PLAN
             </button>
 
@@ -290,17 +1146,21 @@
 
             <h3>3 MONTHS</h3>
 
-            <b>₹2499</b>
+            <div class="price">
+                ₹2499
+            </div>
 
-            <small>/3 months</small>
+            <div class="small">
+                /3 months
+            </div>
 
             <ul>
-                <li>Gym Access</li>
-                <li>Diet Plan</li>
-                <li>3 Months Validity</li>
+                <li>• Gym Access</li>
+                <li>• Diet Plan</li>
+                <li>• 3 Months Validity</li>
             </ul>
 
-            <button data-plan="3 Months">
+            <button onclick="choosePlan('3 Months')">
                 CHOOSE PLAN
             </button>
 
@@ -311,18 +1171,22 @@
 
             <h3>6 MONTHS</h3>
 
-            <b>₹4799</b>
+            <div class="price">
+                ₹4799
+            </div>
 
-            <small>/6 months</small>
+            <div class="small">
+                /6 months
+            </div>
 
             <ul>
-                <li>Gym Access</li>
-                <li>Diet Plan</li>
-                <li>Personal Training</li>
-                <li>6 Months Validity</li>
+                <li>• Gym Access</li>
+                <li>• Diet Plan</li>
+                <li>• Personal Training</li>
+                <li>• 6 Months Validity</li>
             </ul>
 
-            <button data-plan="6 Months">
+            <button onclick="choosePlan('6 Months')">
                 CHOOSE PLAN
             </button>
 
@@ -333,18 +1197,22 @@
 
             <h3>1 YEAR</h3>
 
-            <b>₹7999</b>
+            <div class="price">
+                ₹7999
+            </div>
 
-            <small>/year</small>
+            <div class="small">
+                /year
+            </div>
 
             <ul>
-                <li>Gym Access</li>
-                <li>Diet Plan</li>
-                <li>Personal Training</li>
-                <li>12 Months Validity</li>
+                <li>• Gym Access</li>
+                <li>• Diet Plan</li>
+                <li>• Personal Training</li>
+                <li>• 12 Months Validity</li>
             </ul>
 
-            <button data-plan="1 Year">
+            <button onclick="choosePlan('1 Year')">
                 CHOOSE PLAN
             </button>
 
@@ -355,116 +1223,162 @@
 </section>
 
 
-<!-- ================= TRAINERS ================= -->
+<!-- =========================
+     TRAINERS
+========================= -->
 
-<section id="trainers" class="trainers-section">
+<section id="trainers">
 
-    <h2>OUR TRAINERS</h2>
+    <h2 class="title">
+        OUR TRAINERS
+    </h2>
 
     <div class="trainers">
 
+
         <div class="trainer">
 
-            <div class="trainer-photo p1"></div>
+            <div class="person"></div>
 
-            <h3>Rohit Sharma</h3>
+            <h3>
+                Rohit Sharma
+            </h3>
 
-            <p>Strength Trainer</p>
+            <p>
+                Strength Trainer
+            </p>
 
-            <span>☎ 9876543210</span>
+            <span>
+                ☎ 9876543210
+            </span>
 
         </div>
 
 
         <div class="trainer">
 
-            <div class="trainer-photo p2"></div>
+            <div class="person"></div>
 
-            <h3>Ananya Singh</h3>
+            <h3>
+                Ananya Singh
+            </h3>
 
-            <p>Fitness Coach</p>
+            <p>
+                Fitness Coach
+            </p>
 
-            <span>☎ 9123456780</span>
+            <span>
+                ☎ 9123456780
+            </span>
 
         </div>
 
 
         <div class="trainer">
 
-            <div class="trainer-photo p3"></div>
+            <div class="person"></div>
 
-            <h3>Vikram Patel</h3>
+            <h3>
+                Vikram Patel
+            </h3>
 
-            <p>Bodybuilding Coach</p>
+            <p>
+                Bodybuilding Coach
+            </p>
 
-            <span>☎ 9988776655</span>
+            <span>
+                ☎ 9988776655
+            </span>
 
         </div>
+
 
     </div>
-
-    <button class="red-btn view">
-        VIEW ALL TRAINERS
-    </button>
 
 </section>
 
 
-<!-- ================= REGISTRATION ================= -->
+<!-- =========================
+     REGISTRATION
+========================= -->
 
 <section id="registration" class="registration">
 
-    <h2>MEMBER REGISTRATION</h2>
+    <h2 class="title">
+        MEMBER REGISTRATION
+    </h2>
 
-    <form id="regForm">
+    <p class="subtitle">
+        Register a new gym member using the form below.
+    </p>
+
+    <form class="form" id="registrationForm">
+
 
         <label>
+
             Full Name
+
             <input
-                required
+                type="text"
+                id="fullName"
                 placeholder="Enter full name"
-            >
+                required>
+
         </label>
 
 
         <label>
+
             Phone Number
+
             <input
-                required
+                type="tel"
+                id="phone"
                 placeholder="Enter phone number"
-            >
+                required>
+
         </label>
 
 
         <label>
+
             Email
+
             <input
-                required
                 type="email"
+                id="email"
                 placeholder="Enter email"
-            >
+                required>
+
         </label>
 
 
         <label>
+
             Date of Birth
+
             <input
-                required
                 type="date"
-            >
+                required>
+
         </label>
 
 
         <label>
+
             Address
+
             <input
-                required
+                type="text"
                 placeholder="Enter address"
-            >
+                required>
+
         </label>
 
 
         <label>
+
             Gender
 
             <select required>
@@ -491,9 +1405,10 @@
 
 
         <label>
+
             Choose Plan
 
-            <select id="choosePlan" required>
+            <select id="selectedPlan" required>
 
                 <option value="">
                     Select Plan
@@ -520,571 +1435,296 @@
         </label>
 
 
+        <label>
+
+            Trainer
+
+            <select required>
+
+                <option value="">
+                    Select Trainer
+                </option>
+
+                <option>
+                    Rohit Sharma
+                </option>
+
+                <option>
+                    Ananya Singh
+                </option>
+
+                <option>
+                    Vikram Patel
+                </option>
+
+            </select>
+
+        </label>
+
+
         <button
-            class="red-btn register"
-            type="submit"
-        >
-            REGISTER NOW
+            class="red register"
+            type="submit">
+
+            REGISTER MEMBER
+
         </button>
 
     </form>
 
-    <div id="message"></div>
+    <div
+        class="msg"
+        id="registrationMessage">
+    </div>
 
 </section>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- =========================
+     DASHBOARD
+========================= -->
 
-<section id="dashboard" class="dashboard-area">
+<section id="dashboard" style="padding:0;">
 
-    <aside>
-
-        <div class="side-logo">
-            <span>✚</span> GYM FIT
-        </div>
-
-        <a class="selected">
-            ▣ &nbsp; Dashboard
-        </a>
-
-        <a href="#members">
-            ♙ &nbsp; Members
-        </a>
-
-        <a href="#trainers">
-            ♟ &nbsp; Trainers
-        </a>
-
-        <a href="#plans">
-            ▤ &nbsp; Memberships
-        </a>
-
-        <a href="#payments">
-            ▣ &nbsp; Payments
-        </a>
-
-        <a>
-            ▥ &nbsp; Reports
-        </a>
-
-        <a id="logout">
-            ↪ &nbsp; Logout
-        </a>
-
-    </aside>
+    <div class="dashboardArea">
 
 
-    <div class="dash">
+        <aside class="side">
 
-        <div class="dash-title">
-
-            <div>
-
-                <h2>DASHBOARD</h2>
-
-                <p>
-                    Gym Management Overview
-                </p>
-
+            <div class="sideTitle">
+                GYM FIT
             </div>
 
-            <span id="date"></span>
+            <a class="active" href="#dashboard">
+                Dashboard
+            </a>
 
-        </div>
+            <a href="#registration">
+                Members
+            </a>
+
+            <a href="#plans">
+                Memberships
+            </a>
+
+            <a href="#trainers">
+                Trainers
+            </a>
+
+            <a href="#contact">
+                Payments
+            </a>
+
+        </aside>
 
 
-        <!-- STATS -->
+        <div class="dash">
 
-        <div class="stats">
+            <div class="dashHead">
 
-            <div>
+                <div>
 
-                <label>
-                    Total Members
-                </label>
+                    <h2>
+                        Dashboard
+                    </h2>
 
-                <strong>
-                    152
-                </strong>
+                    <p>
+                        Gym Management System
+                    </p>
 
-                <i>♙</i>
+                </div>
+
+                <div class="date">
+                    Today
+                </div>
 
             </div>
 
 
-            <div>
+            <div class="stats">
 
-                <label>
-                    Active Memberships
-                </label>
 
-                <strong>
-                    98
-                </strong>
+                <div class="stat">
 
-                <i>✓</i>
+                    <label>
+                        TOTAL MEMBERS
+                    </label>
+
+                    <strong>
+                        500
+                    </strong>
+
+                    <i>↗</i>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <label>
+                        ACTIVE MEMBERS
+                    </label>
+
+                    <strong>
+                        420
+                    </strong>
+
+                    <i>↗</i>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <label>
+                        TRAINERS
+                    </label>
+
+                    <strong>
+                        3
+                    </strong>
+
+                    <i>★</i>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <label>
+                        MONTHLY REVENUE
+                    </label>
+
+                    <strong>
+                        ₹85K
+                    </strong>
+
+                    <i>₹</i>
+
+                </div>
+
 
             </div>
 
 
-            <div>
+            <div class="topDash">
 
-                <label>
-                    Total Trainers
-                </label>
 
-                <strong>
-                    12
-                </strong>
+                <div class="box">
 
-                <i>♟</i>
+                    <h3>
+                        MEMBERSHIP OVERVIEW
+                    </h3>
+
+                    <div class="graph">
+
+                        <svg
+                            viewBox="0 0 500 160"
+                            preserveAspectRatio="none">
+
+                            <polyline
+                                points="0,125 70,105 140,115 210,70 280,90 350,45 420,60 500,25"
+                                fill="none"
+                                stroke="#e21d25"
+                                stroke-width="3"/>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <h3>
+                        MEMBERSHIP STATUS
+                    </h3>
+
+                    <div class="pie"></div>
+
+                    <div class="legend">
+                        Active &nbsp; Expired &nbsp; Pending
+                    </div>
+
+                </div>
+
 
             </div>
 
-
-            <div>
-
-                <label>
-                    Total Revenue
-                </label>
-
-                <strong>
-                    ₹2,45,800
-                </strong>
-
-                <i>₹</i>
-
-            </div>
-
-        </div>
-
-
-        <!-- DASHBOARD CHARTS -->
-
-        <div class="dash-top">
 
             <div class="box">
 
                 <h3>
-                    MEMBERSHIP OVERVIEW
+                    RECENT MEMBERS
                 </h3>
 
-                <div class="graph">
+                <div class="scroll">
 
-                    <div class="line"></div>
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Plan</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>001</td>
+                                <td>Rahul</td>
+                                <td>Monthly</td>
+                                <td>
+                                    <em class="ok">
+                                        Active
+                                    </em>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>002</td>
+                                <td>Priya</td>
+                                <td>3 Months</td>
+                                <td>
+                                    <em class="ok">
+                                        Active
+                                    </em>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>003</td>
+                                <td>Arjun</td>
+                                <td>6 Months</td>
+                                <td>
+                                    <em class="wait">
+                                        Pending
+                                    </em>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>004</td>
+                                <td>Neha</td>
+                                <td>1 Year</td>
+                                <td>
+                                    <em class="bad">
+                                        Expired
+                                    </em>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
 
                 </div>
-
-                <div class="xaxis">
-
-                    <span>Jan</span>
-                    <span>Feb</span>
-                    <span>Mar</span>
-                    <span>Apr</span>
-                    <span>May</span>
-                    <span>Jun</span>
-                    <span>Jul</span>
-                    <span>Aug</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="box status-box">
-
-                <h3>
-                    MEMBERSHIP STATUS
-                </h3>
-
-                <div class="pie"></div>
-
-                <div class="legend">
-
-                    <span>
-                        ● Active
-                    </span>
-
-                    <span>
-                        ● Expired
-                    </span>
-
-                    <span>
-                        ● Pending
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ================= MEMBERS ================= -->
-
-        <div
-            id="members"
-            class="box table-box"
-        >
-
-            <div class="box-title">
-
-                <h3>
-                    MEMBERS LIST
-                </h3>
-
-                <button id="addMember">
-                    + ADD MEMBER
-                </button>
-
-            </div>
-
-
-            <div class="scroll">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Member ID
-                            </th>
-
-                            <th>
-                                Name
-                            </th>
-
-                            <th>
-                                Phone
-                            </th>
-
-                            <th>
-                                Plan
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Join Date
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="memberBody">
-
-                        <tr>
-
-                            <td>M001</td>
-
-                            <td>
-                                Rahul Verma
-                            </td>
-
-                            <td>
-                                9876543210
-                            </td>
-
-                            <td>
-                                6 months
-                            </td>
-
-                            <td>
-                                <em class="active">
-                                    Active
-                                </em>
-                            </td>
-
-                            <td>
-                                01-05-2024
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>M002</td>
-
-                            <td>
-                                Sneha Patel
-                            </td>
-
-                            <td>
-                                9123456780
-                            </td>
-
-                            <td>
-                                3 Months
-                            </td>
-
-                            <td>
-                                <em class="active">
-                                    Active
-                                </em>
-                            </td>
-
-                            <td>
-                                10-05-2024
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>M003</td>
-
-                            <td>
-                                Amit Kumar
-                            </td>
-
-                            <td>
-                                9988776655
-                            </td>
-
-                            <td>
-                                1 Year
-                            </td>
-
-                            <td>
-                                <em class="active">
-                                    Active
-                                </em>
-                            </td>
-
-                            <td>
-                                15-05-2024
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>M004</td>
-
-                            <td>
-                                Pooja Singh
-                            </td>
-
-                            <td>
-                                8877665544
-                            </td>
-
-                            <td>
-                                Monthly
-                            </td>
-
-                            <td>
-                                <em class="expired">
-                                    Expired
-                                </em>
-                            </td>
-
-                            <td>
-                                20-04-2024
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>M005</td>
-
-                            <td>
-                                Vikash Yadav
-                            </td>
-
-                            <td>
-                                7766554433
-                            </td>
-
-                            <td>
-                                6 Months
-                            </td>
-
-                            <td>
-                                <em class="pending">
-                                    Pending
-                                </em>
-                            </td>
-
-                            <td>
-                                25-05-2024
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-
-        <!-- ================= PAYMENT HISTORY ================= -->
-
-        <div
-            id="payments"
-            class="box table-box"
-        >
-
-            <h3>
-                PAYMENT HISTORY
-            </h3>
-
-            <div class="scroll">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Payment ID
-                            </th>
-
-                            <th>
-                                Member ID
-                            </th>
-
-                            <th>
-                                Amount
-                            </th>
-
-                            <th>
-                                Payment Date
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Method
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>P001</td>
-                            <td>M001</td>
-                            <td>₹4,799</td>
-                            <td>01-05-2024</td>
-
-                            <td>
-                                <em class="active">
-                                    Success
-                                </em>
-                            </td>
-
-                            <td>
-                                UPI
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>P002</td>
-                            <td>M002</td>
-                            <td>₹2,499</td>
-                            <td>10-05-2024</td>
-
-                            <td>
-                                <em class="active">
-                                    Success
-                                </em>
-                            </td>
-
-                            <td>
-                                Card
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>P003</td>
-                            <td>M003</td>
-                            <td>₹7,999</td>
-                            <td>15-05-2024</td>
-
-                            <td>
-                                <em class="active">
-                                    Success
-                                </em>
-                            </td>
-
-                            <td>
-                                UPI
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>P004</td>
-                            <td>M004</td>
-                            <td>₹999</td>
-                            <td>20-04-2024</td>
-
-                            <td>
-                                <em class="expired">
-                                    Failed
-                                </em>
-                            </td>
-
-                            <td>
-                                Card
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>P005</td>
-                            <td>M005</td>
-                            <td>₹4,799</td>
-                            <td>25-05-2024</td>
-
-                            <td>
-                                <em class="pending">
-                                    Pending
-                                </em>
-                            </td>
-
-                            <td>
-                                UPI
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
 
             </div>
 
@@ -1095,511 +1735,248 @@
 </section>
 
 
-<!-- ================= DATABASE DESIGN ================= -->
+<!-- =========================
+     DATABASE
+========================= -->
 
 <section class="database">
 
     <h2>
-        DATABASE DESIGN <span>(MySQL)</span>
+        <span>GYM FIT</span>
+        DATABASE DESIGN
     </h2>
-
 
     <div class="schema">
 
 
-        <div>
+        <div class="db">
 
             <h3>
                 MEMBERSHIP_PLANS
             </h3>
 
-            <p>
-                🔑 Plan_ID &nbsp; INT
-            </p>
-
-            <p>
-                Plan_Name &nbsp; VARCHAR(50)
-            </p>
-
-            <p>
-                Duration &nbsp; VARCHAR(20)
-            </p>
-
-            <p>
-                Price &nbsp; DECIMAL(10,2)
-            </p>
-
-            <p>
-                Description &nbsp; TEXT
-            </p>
+            <p>plan_id : INT</p>
+            <p>plan_name : VARCHAR</p>
+            <p>price : DECIMAL</p>
+            <p>duration : INT</p>
 
         </div>
 
 
-        <div>
+        <div class="db">
 
             <h3>
                 MEMBERS
             </h3>
 
-            <p>
-                🔑 Member_ID &nbsp; INT
-            </p>
-
-            <p>
-                Full_Name &nbsp; VARCHAR(100)
-            </p>
-
-            <p>
-                Phone &nbsp; VARCHAR(15)
-            </p>
-
-            <p>
-                Email &nbsp; VARCHAR(100)
-            </p>
-
-            <p>
-                Address &nbsp; TEXT
-            </p>
-
-            <p>
-                DOB &nbsp; DATE
-            </p>
-
-            <p>
-                Gender &nbsp; VARCHAR(10)
-            </p>
-
-            <p>
-                🔗 Plan_ID &nbsp; INT
-            </p>
-
-            <p>
-                Join_Date &nbsp; DATE
-            </p>
-
-            <p>
-                Status &nbsp; VARCHAR(20)
-            </p>
+            <p>member_id : INT</p>
+            <p>name : VARCHAR</p>
+            <p>phone : VARCHAR</p>
+            <p>email : VARCHAR</p>
+            <p>plan_id : INT</p>
 
         </div>
 
 
-        <div>
+        <div class="db">
 
             <h3>
                 TRAINERS
             </h3>
 
-            <p>
-                🔑 Trainer_ID &nbsp; INT
-            </p>
-
-            <p>
-                Trainer_Name &nbsp; VARCHAR(100)
-            </p>
-
-            <p>
-                Specialization &nbsp; VARCHAR(100)
-            </p>
-
-            <p>
-                Phone &nbsp; VARCHAR(15)
-            </p>
-
-            <p>
-                Email &nbsp; VARCHAR(100)
-            </p>
-
-            <p>
-                Experience &nbsp; INT
-            </p>
+            <p>trainer_id : INT</p>
+            <p>trainer_name : VARCHAR</p>
+            <p>specialization : VARCHAR</p>
+            <p>phone : VARCHAR</p>
 
         </div>
 
 
-        <div>
+        <div class="db">
 
             <h3>
                 TRAINER_ASSIGNMENT
             </h3>
 
-            <p>
-                🔑 Assign_ID &nbsp; INT
-            </p>
-
-            <p>
-                🔗 Member_ID &nbsp; INT
-            </p>
-
-            <p>
-                🔗 Trainer_ID &nbsp; INT
-            </p>
-
-            <p>
-                Assign_Date &nbsp; DATE
-            </p>
+            <p>assignment_id : INT</p>
+            <p>member_id : INT</p>
+            <p>trainer_id : INT</p>
 
         </div>
 
 
-        <div>
+        <div class="db">
 
             <h3>
                 PAYMENTS
             </h3>
 
-            <p>
-                🔑 Payment_ID &nbsp; INT
-            </p>
-
-            <p>
-                🔗 Member_ID &nbsp; INT
-            </p>
-
-            <p>
-                Amount &nbsp; DECIMAL(10,2)
-            </p>
-
-            <p>
-                Payment_Date &nbsp; DATE
-            </p>
-
-            <p>
-                Payment_Method &nbsp; VARCHAR(50)
-            </p>
-
-            <p>
-                Status &nbsp; VARCHAR(20)
-            </p>
-
-            <p>
-                Transaction_ID &nbsp; VARCHAR(100)
-            </p>
+            <p>payment_id : INT</p>
+            <p>member_id : INT</p>
+            <p>amount : DECIMAL</p>
+            <p>payment_date : DATE</p>
 
         </div>
 
 
-        <div>
+        <div class="db">
 
             <h3>
                 ATTENDANCE
             </h3>
 
-            <p>
-                🔑 Attendance_ID &nbsp; INT
-            </p>
-
-            <p>
-                🔗 Member_ID &nbsp; INT
-            </p>
-
-            <p>
-                Check_In &nbsp; DATETIME
-            </p>
-
-            <p>
-                Check_Out &nbsp; DATETIME
-            </p>
-
-            <p>
-                Date &nbsp; DATE
-            </p>
+            <p>attendance_id : INT</p>
+            <p>member_id : INT</p>
+            <p>attendance_date : DATE</p>
+            <p>status : VARCHAR</p>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <h2 class="title">
+        CONTACT US
+    </h2>
+
+    <div class="contact">
+
+
+        <div class="contactBox">
+
+            <h3>
+                GYM FIT
+            </h3>
+
+            <p>
+                📍 Gym Management System
+            </p>
+
+            <p>
+                ☎ Contact: 9876543210
+            </p>
+
+            <p>
+                ✉ Email: gymfit@example.com
+            </p>
+
+            <p>
+                🕒 Monday - Sunday
+            </p>
+
+        </div>
+
+
+        <form class="contactForm">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required>
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required>
+
+            <textarea
+                placeholder="Your Message"
+                required></textarea>
+
+            <button
+                class="red"
+                type="submit">
+
+                SEND MESSAGE
+
+            </button>
+
+        </form>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
+
     GYM MANAGEMENT SYSTEM – WEBSITE
+    <br>
+    © 2026 GYM FIT
+
 </footer>
 
 
 </div>
-</div>
 
-
-<!-- ==================================================
-     LOGIN + WEBSITE JAVASCRIPT
-================================================== -->
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function(){
+/* =========================
+   CHOOSE PLAN
+========================= */
 
-    const loginScreen =
-        document.getElementById("loginScreen");
+function choosePlan(plan){
 
-    const mainWebsite =
-        document.getElementById("mainWebsite");
+    document.getElementById("selectedPlan").value = plan;
 
-    const loginForm =
-        document.getElementById("loginForm");
-
-    const username =
-        document.getElementById("loginUsername");
-
-    const password =
-        document.getElementById("loginPassword");
-
-    const error =
-        document.getElementById("loginError");
-
-
-    /* =========================
-       CHECK LOGIN
-    ========================= */
-
-    if(localStorage.getItem("gymFitLoggedIn") === "true"){
-
-        loginScreen.style.display = "none";
-
-        mainWebsite.style.display = "block";
-
-    }
-
-
-    /* =========================
-       LOGIN
-    ========================= */
-
-    loginForm.addEventListener("submit", function(event){
-
-        event.preventDefault();
-
-        const enteredUsername =
-            username.value.trim();
-
-        const enteredPassword =
-            password.value;
-
-
-        if(
-            enteredUsername === "admin" &&
-            enteredPassword === "1234"
-        ){
-
-            localStorage.setItem(
-                "gymFitLoggedIn",
-                "true"
-            );
-
-            loginScreen.style.display = "none";
-
-            mainWebsite.style.display = "block";
-
-            window.scrollTo(0,0);
-
-        }
-        else{
-
-            error.style.display = "block";
-
-        }
-
+    document.getElementById("registration").scrollIntoView({
+        behavior:"smooth"
     });
 
-
-    /* =========================
-       LOGOUT
-    ========================= */
-
-    const logout =
-        document.getElementById("logout");
-
-    if(logout){
-
-        logout.addEventListener("click", function(){
-
-            localStorage.removeItem(
-                "gymFitLoggedIn"
-            );
-
-            mainWebsite.style.display = "none";
-
-            loginScreen.style.display = "flex";
-
-            username.value = "";
-
-            password.value = "";
-
-            error.style.display = "none";
-
-            window.scrollTo(0,0);
-
-        });
-
-    }
+}
 
 
-    /* =========================
-       DATE
-    ========================= */
+/* =========================
+   REGISTRATION
+========================= */
 
-    const date =
-        document.getElementById("date");
+document
+.getElementById("registrationForm")
+.addEventListener("submit", function(event){
 
-    if(date){
+    event.preventDefault();
 
-        const today = new Date();
+    document.getElementById("registrationMessage").textContent =
+        "✓ Member registered successfully!";
 
-        date.textContent =
-            today.toLocaleDateString(
-                "en-GB",
-                {
-                    day:"2-digit",
-                    month:"2-digit",
-                    year:"numeric"
-                }
-            );
+    this.reset();
 
-    }
+});
 
 
-    /* =========================
-       CHOOSE PLAN
-    ========================= */
+/* =========================
+   CONTACT FORM
+========================= */
 
-    document
-        .querySelectorAll(".plan button")
-        .forEach(function(button){
+document
+.querySelector(".contactForm")
+.addEventListener("submit", function(event){
 
-            button.addEventListener("click", function(){
+    event.preventDefault();
 
-                const selectedPlan =
-                    button.getAttribute("data-plan");
+    alert("Thank you! Your message has been submitted.");
 
-                const choosePlan =
-                    document.getElementById("choosePlan");
-
-                if(choosePlan){
-
-                    choosePlan.value =
-                        selectedPlan;
-
-                }
-
-                const registration =
-                    document.getElementById(
-                        "registration"
-                    );
-
-                if(registration){
-
-                    registration.scrollIntoView({
-                        behavior:"smooth"
-                    });
-
-                }
-
-            });
-
-        });
-
-
-    /* =========================
-       REGISTRATION
-    ========================= */
-
-    const regForm =
-        document.getElementById("regForm");
-
-    if(regForm){
-
-        regForm.addEventListener(
-            "submit",
-            function(event){
-
-                event.preventDefault();
-
-                const message =
-                    document.getElementById(
-                        "message"
-                    );
-
-                message.textContent =
-                    "Registration successful!";
-
-                message.style.color =
-                    "green";
-
-                regForm.reset();
-
-            }
-        );
-
-    }
-
-
-    /* =========================
-       ADD MEMBER DEMO
-    ========================= */
-
-    const addMember =
-        document.getElementById("addMember");
-
-    if(addMember){
-
-        addMember.addEventListener(
-            "click",
-            function(){
-
-                alert(
-                    "Add Member feature is ready for database integration."
-                );
-
-            }
-        );
-
-    }
+    this.reset();
 
 });
 
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const loginScreen = document.getElementById("loginScreen");
-    const mainWebsite = document.getElementById("mainWebsite");
-    const loginForm = document.getElementById("loginForm");
-    const loginError = document.getElementById("loginError");
 
-    if (!loginForm) {
-        console.log("Login form not found");
-        return;
-    }
-
-    loginForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const username =
-            document.getElementById("loginUsername").value.trim();
-
-        const password =
-            document.getElementById("loginPassword").value;
-
-        if (username === "admin" && password === "1234") {
-
-            loginScreen.style.display = "none";
-            mainWebsite.style.display = "block";
-
-            loginError.style.display = "none";
-
-        } else {
-
-            loginError.style.display = "block";
-
-        }
-
-    });
-
-});
-</script>
 </body>
 </html>
