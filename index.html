@@ -1384,6 +1384,108 @@ document
 });
 
 </script>
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
+  const SUPABASE_URL = 'YOUR_PROJECT_URL';
+  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const $ = (id) => document.getElementById(id);
+
+  // ---------- DASHBOARD ----------
+  async function loadDashboard() {
+    const { count: totalMembers } = await supabase
+      .from('member').select('*', { count: 'exact', head: true });
+
+    const { count: totalTrainers } = await supabase
+      .from('trainer').select('*', { count: 'exact', head: true });
+
+    const { data: pays } = await supabase
+      .from('payment').select('amount').eq('status', 'Paid');
+    const revenue = (pays || []).reduce((sum, p) => sum + p.amount, 0);
+
+    const today = new Date().toISOString().slice(0, 10);
+    const { count: presentToday } = await supabase
+      .from('attendance').select('*', { count: 'exact', head: true })
+      .eq('attendance_date', today).eq('status', 'Present');
+
+    const { data: recent } = await supabase
+      .from('member')
+      .select('member_id, member_name, membership(plan), payment(status)')
+      .order('member_id', { ascending: false })
+      .limit(4);
+
+    if ($('totalMembers'))  $('totalMembers').textContent  = totalMembers ?? 0;
+    if ($('activeMembers')) $('activeMembers').textContent = presentToday ?? 0;
+    if ($('totalTrainers')) $('totalTrainers').textContent = totalTrainers ?? 0;
+    if ($('revenue')) {
+      $('revenue').textContent = revenue >= 1000
+        ? '₹' + Math.round(revenue / 1000) + 'K'
+        : '₹' + revenue;
+    }
+
+    if ($('recentMembersBody') && recent) {
+      $('recentMembersBody').innerHTML = recent.map((m) => `
+        <tr>
+          <td>${String(m.member_id).padStart(3, '0')}</td>
+          <td>${m.member_name}</td>
+          <td>${m.membership?.[0]?.plan ?? '-'}</td>
+          <td>${m.payment?.[0]?.status === 'Paid' ? 'Active' : 'Pending'}</td>
+        </tr>`).join('');
+    }
+  }
+
+  // ---------- REGISTRATION ----------
+  const planMap = {
+    'Monthly':  { plan: 'Monthly',     fees: 1500 },
+    '3 Months': { plan: 'Quarterly',   fees: 4000 },
+    '6 Months': { plan: 'Half-Yearly', fees: 7500 },
+    '1 Year':   { plan: 'Yearly',      fees: 14000 }
+  };
+
+  const selectedText = (id) => {
+    const el = $(id);
+    return el.options[el.selectedIndex].text;
+  };
+
+  if ($('registerForm')) {
+    $('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const dob = new Date($('dob').value);
+      const age = Math.floor((Date.now() - dob) / (365.25 * 24 * 3600 * 1000));
+      const chosen = planMap[selectedText('plan')];
+
+      if (!chosen) return alert('Please select a membership plan.');
+
+      const { data: member, error } = await supabase
+        .from('member')
+        .insert({
+          member_name: $('name').value,
+          age: age,
+          gender: selectedText('gender'),
+          phone: $('phone').value,
+          email: $('email').value
+        })
+        .select()
+        .single();
+
+      if (error) return alert('Error: ' + error.message);
+
+      const { error: memErr } = await supabase
+        .from('membership')
+        .insert({ member_id: member.member_id, plan: chosen.plan, fees: chosen.fees });
+
+      if (memErr) return alert('Error: ' + memErr.message);
+
+      alert('Member registered successfully!');
+      $('registerForm').reset();
+      loadDashboard();
+    });
+  }
+
+  loadDashboard();
+</script>
 </body>
 </html>
